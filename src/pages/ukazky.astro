@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ReferenceCard from '../components/ReferenceCard.astro';
 import { references } from '../data/content';
+import { getUrl } from '../lib/utils';
 
 const selectedType = Astro.url.searchParams.get('typ') || 'vse';
 const filteredReferences = selectedType === 'vse' 
