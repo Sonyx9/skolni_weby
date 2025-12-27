@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  primaryCta?: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
+  image?: string;
+}
+const { title, subtitle, primaryCta, secondaryCta, image } = Astro.props;
+---
+
+<section class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-transparent to-primary-50 opacity-50"></div>
+  
+  <div class="container-custom relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="fade-in-up">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 text-balance leading-tight">
+          {title}
+        </h1>
+        {subtitle && (
+          <p class="text-lg md:text-xl lg:text-2xl text-gray-600 mb-10 text-balance leading-relaxed max-w-2xl">
+            {subtitle}
+          </p>
+        )}
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          {primaryCta && (
+            <a href={primaryCta.href} class="px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-all transform hover:scale-105 text-center text-lg">
+              {primaryCta.text}
+            </a>
+          )}
+          {secondaryCta && (
+            <a href={secondaryCta.href} class="px-8 py-4 bg-white text-brand font-semibold rounded-lg border-2 border-brand hover:bg-primary-50 transition-all text-center text-lg">
+              {secondaryCta.text}
+            </a>
+          )}
+        </div>
+      </div>
+      
+      {image && (
+        <div class="fade-in hidden lg:block relative">
+          <div class="relative z-20 flex justify-end">
+            <img 
+              src={image} 
+              alt="" 
+              class="w-full max-w-2xl h-auto object-contain bg-transparent"
+              loading="eager"
+            />
+          </div>
+          {image.includes('placeholder') && <span class="img-label">NAHRADIT</span>}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+

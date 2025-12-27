@@ -1,0 +1,417 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+import ReferenceCard from '../components/ReferenceCard.astro';
+import PricingCard from '../components/PricingCard.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import FAQSchema from '../components/FAQSchema.astro';
+import ServiceSchema from '../components/ServiceSchema.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { references, pricingTiers, faq } from '../data/content';
+---
+
+<BaseLayout 
+  title="Moderní web pro školu, který rodiče opravdu používají | ŠkolníWeby"
+  description="Tvoříme moderní, rychlé a přehledné weby pro školy. MŠ, ZŠ i SŠ. Rychlost, přehlednost, povinné informace a servis v jednom balíčku."
+>
+  <Hero 
+    title="Moderní web pro školu, který rodiče opravdu používají."
+    subtitle="Rychlý, přehledný a snadno spravovatelný web, který splňuje všechny povinné požadavky a rodiče na něm najdou vše, co potřebují."
+    primaryCta={{ text: "Chci nabídku", href: "/kontakt" }}
+    secondaryCta={{ text: "Zobrazit ukázky", href: "/ukazky" }}
+    image="https://www.broken-mouse.cz/wp-content/uploads/2021/05/Datovy-zdroj-9-1.svg"
+  />
+
+  <!-- S čím vám můžeme pomoci? -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">S čím vám můžeme pomoci?</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Tvoříme moderní, rychlé a přehledné weby pro školy. MŠ, ZŠ i SŠ. Rychlost, přehlednost, povinné informace a servis v jednom balíčku.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <Card class="scroll-reveal text-center">
+          <div class="w-20 h-20 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Rychlý a přístupný</h3>
+          <p class="text-gray-600 mb-6">Optimalizovaný pro rychlé načítání a splnění standardů přístupnosti WCAG 2.1</p>
+          <a href="/jak-to-probiha" class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
+            Více informací
+          </a>
+        </Card>
+        <Card class="scroll-reveal text-center">
+          <div class="w-20 h-20 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Snadná správa obsahu</h3>
+          <p class="text-gray-600 mb-6">Intuitivní systém, který zvládne spravovat kdokoliv ze školy bez technických znalostí</p>
+          <a href="/jak-to-probiha" class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
+            Více informací
+          </a>
+        </Card>
+        <Card class="scroll-reveal text-center">
+          <div class="w-20 h-20 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Bezpečnost a servis</h3>
+          <p class="text-gray-600 mb-6">Dlouhodobá podpora, školení a zajištění bezpečnosti vašeho webu</p>
+          <a href="/cenik" class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
+            Více informací
+          </a>
+        </Card>
+        <Card class="scroll-reveal text-center">
+          <div class="w-20 h-20 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Kompletní řešení</h3>
+          <p class="text-gray-600 mb-6">Od návrhu přes naplnění obsahem až po školení a dlouhodobou podporu</p>
+          <a href="/cenik" class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
+            Více informací
+          </a>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Přidejte se k našim spokojeným zákazníkům -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Přidejte se k našim spokojeným zákazníkům</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Tvoříme weby pro mateřské, základní a střední školy po celé České republice
+        </p>
+      </div>
+      
+      <!-- Statistiky -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
+        <div class="text-center scroll-reveal bg-white rounded-xl p-8 shadow-sm">
+          <div class="text-4xl md:text-5xl font-bold text-brand mb-2"><span class="count" data-target="6" data-duration="2000">0</span> <span class="text-lg font-medium">týdnů</span></div>
+          <div class="text-gray-600 font-medium">od kontaktu po spuštění</div>
+        </div>
+        <div class="text-center scroll-reveal bg-white rounded-xl p-8 shadow-sm">
+          <div class="text-4xl md:text-5xl font-bold text-brand mb-2"><span class="count" data-target="99" data-duration="1200">0</span><span class="text-lg font-medium">%</span></div>
+          <div class="text-gray-600 font-medium">spokojených škol</div>
+        </div>
+        <div class="text-center scroll-reveal bg-white rounded-xl p-8 shadow-sm">
+          <div class="text-4xl md:text-5xl font-bold text-brand mb-2"><span class="count" data-target="1" data-duration="1500">0</span> <span class="text-lg font-medium">rok</span></div>
+          <div class="text-gray-600 font-medium">podpory v balíčku</div>
+        </div>
+      </div>
+
+      <!-- Typy škol -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 scroll-reveal">
+        <div class="bg-white px-6 py-3 rounded-lg shadow-sm max-w-xs text-center">
+          <div class="text-base font-semibold text-brand">Určeno pro mateřské školy</div>
+        </div>
+        <div class="bg-white px-6 py-3 rounded-lg shadow-sm max-w-xs text-center">
+          <div class="text-base font-semibold text-brand">Základní školy</div>
+        </div>
+        <div class="bg-white px-6 py-3 rounded-lg shadow-sm max-w-xs text-center">
+          <div class="text-base font-semibold text-brand">Střední školy</div>
+        </div>
+      </div>
+
+      <script>
+        // Simple count-up animation triggered when in viewport
+        (function() {
+          if (typeof window === 'undefined') return;
+          const easeOutQuad = t => t*(2-t);
+          const animate = (el, target, duration) => {
+            let start = null;
+            const initial = 0;
+            const tick = (ts) => {
+              if (!start) start = ts;
+              const elapsed = ts - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const value = Math.round(initial + (target - initial) * easeOutQuad(progress));
+              el.textContent = value;
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          };
+
+          const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target;
+              const target = parseInt(el.dataset.target, 10) || 0;
+              const duration = parseInt(el.dataset.duration, 10) || 1500;
+              animate(el, target, duration);
+              obs.unobserve(el);
+            });
+          }, { threshold: 0.3 });
+
+          document.querySelectorAll('.count').forEach(el => observer.observe(el));
+        })();
+      </script>
+    </div>
+  </section>
+
+  <!-- Proč to školy řeší -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Proč to školy řeší</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Řešíme problémy, se kterými se školy běžně potýkají
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card class="scroll-reveal">
+          <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Nepřehledný web</h3>
+          <p class="text-gray-600 leading-relaxed">→ Jasná struktura a navigace, která dává smysl rodičům i učitelům</p>
+        </Card>
+        <Card class="scroll-reveal">
+          <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Dokumenty chaos</h3>
+          <p class="text-gray-600 leading-relaxed">→ Organizované sekce, štítky a vyhledávání pro snadné nalezení dokumentů</p>
+        </Card>
+        <Card class="scroll-reveal">
+          <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Závislost na jednom člověku</h3>
+          <p class="text-gray-600 leading-relaxed">→ Jednoduchá správa pro celý tým + servis, který vás nenechá na holičkách</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ukázky Preview -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Ukázky našich webů</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Podívejte se na weby, které jsme vytvořili pro školy po celé České republice
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {references.slice(0, 6).map((ref) => (
+          <ReferenceCard {...ref} />
+        ))}
+      </div>
+      <div class="text-center scroll-reveal">
+        <a href="/ukazky" class="inline-block px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors text-lg">
+          Všechny ukázky
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Co dodáme -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Co dodáme</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Kompletní řešení od návrhu až po dlouhodobou podporu
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <Card class="scroll-reveal text-center">
+          <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Struktura a design</h3>
+          <p class="text-gray-600">Moderní, responzivní design přizpůsobený potřebám školy</p>
+        </Card>
+        <Card class="scroll-reveal text-center">
+          <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Přenos obsahu</h3>
+          <p class="text-gray-600">Pomůžeme s přenosem a úpravou veškerého obsahu</p>
+        </Card>
+        <Card class="scroll-reveal text-center">
+          <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Rychlost a bezpečnost</h3>
+          <p class="text-gray-600">Optimalizace pro rychlost a zajištění bezpečnosti</p>
+        </Card>
+        <Card class="scroll-reveal text-center">
+          <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Servis + školení</h3>
+          <p class="text-gray-600">Školení správce a dlouhodobá technická podpora</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proces Timeline -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Jak to probíhá</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Průhledný proces od prvního kontaktu po spuštění webu
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col lg:flex-row items-start justify-center gap-6 mb-8">
+          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
+            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.586a1 1 0 01.707.293L11 5h2a2 2 0 012 2v1m-1 7v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-3"/></svg>
+            </div>
+            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Krátký call</p>
+            <p class="text-sm text-gray-500 mt-2">Rychlý telefonát pro zjištění potřeb školy</p>
+          </div>
+
+          <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+
+          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
+            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h3m10 0h3a1 1 0 001-1V7M7 21h10"/></svg>
+            </div>
+            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Návrh struktury</p>
+            <p class="text-sm text-gray-500 mt-2">Navrhneme logickou strukturu obsahu a menu</p>
+          </div>
+
+          <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+
+          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
+            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12l9-5-9-5-9 5 9 5z"/></svg>
+            </div>
+            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Design</p>
+            <p class="text-sm text-gray-500 mt-2">Vytvoříme vizuální návrh a ukázky stránek</p>
+          </div>
+
+          <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+
+          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
+            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
+            </div>
+            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Naplnění</p>
+            <p class="text-sm text-gray-500 mt-2">Doplníme texty, obrázky a dokumenty</p>
+          </div>
+
+          <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+
+          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
+            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Spuštění</p>
+            <p class="text-sm text-gray-500 mt-2">Přesun na živý hosting a finální kontrola</p>
+          </div>
+
+          <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+
+          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
+            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Servis</p>
+            <p class="text-sm text-gray-500 mt-2">Pravidelná podpora, aktualizace a školení</p>
+          </div>
+        </div>
+        <div class="text-center scroll-reveal">
+          <a href="/jak-to-probiha" class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
+            Podívat se na detail procesu
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Teaser -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Balíčky</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Vyberte si balíček, který nejlépe vyhovuje potřebám vaší školy
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
+        {pricingTiers.map((tier) => (
+          <PricingCard {...tier} />
+        ))}
+      </div>
+      <!-- odstraněno: "Zobrazit ceník" tlačítko podle požadavku -->
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Často kladené otázky</h2>
+        <p class="text-xl text-gray-600">
+          Odpovědi na nejčastější dotazy
+        </p>
+      </div>
+      <FAQAccordion faqs={faq.slice(0, 5)} />
+      <FAQSchema faqs={faq.slice(0, 5)} />
+    </div>
+  </section>
+
+  <ServiceSchema />
+
+  <!-- Bottom CTA -->
+  <CTABanner 
+    title="Chcete web, který škola zvládne spravovat bez stresu?"
+    ctaText="Nezávazná nabídka"
+    ctaHref="/kontakt"
+  />
+</BaseLayout>
+
+<script>
+  // Scroll reveal
+  if (typeof window !== 'undefined') {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  }
+</script>
+

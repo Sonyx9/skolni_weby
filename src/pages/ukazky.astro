@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReferenceCard from '../components/ReferenceCard.astro';
+import { references } from '../data/content';
+
+const selectedType = Astro.url.searchParams.get('typ') || 'vse';
+const filteredReferences = selectedType === 'vse' 
+  ? references 
+  : references.filter(ref => ref.type === selectedType);
+---
+
+<BaseLayout 
+  title="Ukázky školních webů | ŠkolníWeby"
+  description="Podívejte se na weby, které jsme vytvořili pro mateřské, základní a střední školy po celé České republice."
+>
+  <section class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-primary-50 via-white to-primary-50">
+    <div class="container-custom">
+      <div class="text-center mb-12 scroll-reveal">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Ukázky školních webů</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Podívejte se na weby, které jsme vytvořili pro školy po celé České republice
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12 scroll-reveal">
+        <a 
+          href="/ukazky?typ=vse"
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            selectedType === 'vse' 
+              ? 'bg-accent text-white' 
+              : 'bg-white text-gray-700 hover:bg-gray-100'
+          }`}
+        >
+          Vše
+        </a>
+        <a 
+          href="/ukazky?typ=ms"
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            selectedType === 'ms' 
+              ? 'bg-accent text-white' 
+              : 'bg-white text-gray-700 hover:bg-gray-100'
+          }`}
+        >
+          MŠ
+        </a>
+        <a 
+          href="/ukazky?typ=zs"
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            selectedType === 'zs' 
+              ? 'bg-accent text-white' 
+              : 'bg-white text-gray-700 hover:bg-gray-100'
+          }`}
+        >
+          ZŠ
+        </a>
+        <a 
+          href="/ukazky?typ=ss"
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            selectedType === 'ss' 
+              ? 'bg-accent text-white' 
+              : 'bg-white text-gray-700 hover:bg-gray-100'
+          }`}
+        >
+          SŠ
+        </a>
+        <a 
+          href="/ukazky?typ=zus"
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            selectedType === 'zus' 
+              ? 'bg-accent text-white' 
+              : 'bg-white text-gray-700 hover:bg-gray-100'
+          }`}
+        >
+          ZUŠ
+        </a>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredReferences.map((ref) => (
+          <ReferenceCard {...ref} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Scroll reveal
+  if (typeof window !== 'undefined') {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  }
+</script>
+

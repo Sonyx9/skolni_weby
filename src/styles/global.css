@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand: #22009C;
+  --color-accent: #FF7400;
+  --color-accent-hover: #22009C;
+  --color-primary: #22009C;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Button components */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-md text-white font-medium transition-colors duration-200;
+    background-color: var(--color-accent);
+  }
+
+  .btn:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium border transition-colors duration-200;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: transparent;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-accent-hover);
+    color: white;
+    border-color: var(--color-accent-hover);
+  }
+
+  /* Logo color helpers (text or SVG) */
+  .logo {
+    color: var(--color-brand);
+  }
+
+  .logo svg {
+    fill: var(--color-brand);
+    stroke: var(--color-brand);
+  }
+
+  /* Image placeholder label */
+  .img-with-label {
+    position: relative;
+  }
+
+  .img-with-label .img-label {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    letter-spacing: 0.02em;
+    z-index: 30;
+    pointer-events: none;
+  }
+
+  /* Navigation pill */
+  .nav-pill {
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  /* Footer logo: force white variant on dark background */
+  .footer-logo {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Hero decorative shape removed per design preference */
+}
+
+/* Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .fade-in-up {
+    animation: none;
+  }
+}
+
+/* Scroll reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+

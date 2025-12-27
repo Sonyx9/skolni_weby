@@ -1,0 +1,16 @@
+---
+interface Props {
+  title?: string;
+  children?: any;
+  class?: string;
+}
+const { title, children, class: className = '' } = Astro.props;
+---
+
+<div class={`bg-white rounded-xl shadow-sm border border-gray-200 p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ${className} flex flex-col`}>
+  <div class="flex-1 flex flex-col justify-between">
+    {title && <h3 class="text-xl font-bold text-gray-900 mb-4">{title}</h3>}
+    <slot />
+  </div>
+</div>
+

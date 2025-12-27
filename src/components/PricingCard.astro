@@ -1,0 +1,53 @@
+---
+interface Props {
+  name: string;
+  subtitle: string;
+  price: string;
+  priceNote?: string;
+  features: string[];
+  recommended?: boolean;
+  cta: string;
+}
+const { name, subtitle, price, priceNote, features, recommended, cta } = Astro.props;
+---
+
+<div class={`relative bg-white rounded-xl shadow-sm border-2 p-8 hover:shadow-xl transition-all duration-300 flex flex-col ${recommended ? 'border-primary-500 shadow-lg' : 'border-gray-200'}`}>
+  {recommended && (
+    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+      <span class="bg-brand text-white text-xs font-semibold px-4 py-1 rounded-full">
+        Doporučeno
+      </span>
+    </div>
+  )}
+  
+  <div class="flex-1">
+    <div class="text-center mb-6">
+      <h3 class="text-2xl font-bold text-gray-900 mb-2">{name}</h3>
+      <p class="text-gray-600 text-sm mb-4">{subtitle}</p>
+      <div class="mb-2">
+        <span class="text-4xl font-bold text-gray-900">{price}</span>
+        {priceNote && <span class="text-gray-600 text-sm ml-2">{priceNote}</span>}
+      </div>
+    </div>
+
+    <ul class="space-y-3 mb-8">
+    {features.map((feature) => (
+      <li class="flex items-start">
+        <svg class="w-5 h-5 text-brand mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="text-gray-700 text-sm">{feature}</span>
+      </li>
+    ))}
+    </ul>
+  </div>
+
+  <a href="/kontakt" class={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all ${
+    recommended 
+      ? 'bg-accent text-white hover:bg-brand' 
+      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+  }`}>
+    {cta}
+  </a>
+</div>
+

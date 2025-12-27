@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+---
+
+<BaseLayout 
+  title="Kontakt - Nezávazná nabídka | ŠkolníWeby"
+  description="Kontaktujte nás pro nezávaznou nabídku webu pro vaši školu. Rádi vám odpovíme na všechny otázky a připravíme cenovou kalkulaci."
+>
+  <Hero 
+    title="Kontakt"
+    subtitle="Máte dotaz nebo chcete nezávaznou nabídku? Napište nám nebo zavolejte."
+  />
+
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <Card class="scroll-reveal">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Kontaktní údaje</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Email</div>
+              <a href="mailto:info@broken-mouse.cz" class="text-brand hover:text-primary-800 font-medium">
+                info@broken-mouse.cz
+              </a>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Telefon</div>
+              <a href="tel:+420776831780" class="text-brand hover:text-primary-800 font-medium">
+                +420 776 831 780
+              </a>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Provozní doba</div>
+              <div class="text-gray-700">Pondělí - Pátek: 9:00 - 17:00</div>
+            </div>
+          </div>
+        </Card>
+
+        <Card class="scroll-reveal">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Rychlý kontakt</h3>
+          <div class="space-y-4">
+            <a 
+              href="mailto:info@broken-mouse.cz?subject=Nezávazná nabídka"
+              class="block w-full px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors text-center"
+            >
+              Poslat email
+            </a>
+            <a 
+              href="tel:+420776831780"
+              class="block w-full px-6 py-3 bg-white text-brand font-semibold rounded-lg border-2 border-brand hover:bg-primary-50 transition-colors text-center"
+            >
+              Zavolat
+            </a>
+          </div>
+        </Card>
+      </div>
+
+      <!-- Fakturační údaje -->
+      <Card class="scroll-reveal">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Fakturační údaje</h3>
+        <div class="space-y-2 text-gray-700">
+          <div><strong>Název:</strong> [DOPLNIT]</div>
+          <div><strong>IČO:</strong> [DOPLNIT]</div>
+          <div><strong>DIČ:</strong> [DOPLNIT — pokud máte]</div>
+          <div><strong>Adresa sídla:</strong> [DOPLNIT]</div>
+          <div class="text-sm text-gray-500">Vložte zde fakturační údaje, které se mají objevit na smlouvách a fakturách.</div>
+        </div>
+      </Card>
+
+      <!-- Form Placeholder -->
+      <Card class="scroll-reveal">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Kontaktní formulář</h3>
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+          <p class="text-yellow-800 text-sm">
+            <strong>Formulář doplníme – zatím napište na</strong> <a href="mailto:info@broken-mouse.cz" class="underline">info@broken-mouse.cz</a> nebo zavolejte na <a href="tel:+420776831780" class="underline">+420 776 831 780</a>.
+          </p>
+        </div>
+        <form class="space-y-6 opacity-50 pointer-events-none">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Jméno a příjmení</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand"
+              disabled
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand"
+              disabled
+            />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand"
+              disabled
+            />
+          </div>
+          <div>
+            <label for="school" class="block text-sm font-medium text-gray-700 mb-2">Název školy</label>
+            <input 
+              type="text" 
+              id="school" 
+              name="school" 
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand"
+              disabled
+            />
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Zpráva</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="5"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand"
+              disabled
+            ></textarea>
+          </div>
+          <button 
+            type="submit"
+            class="w-full px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors"
+            disabled
+          >
+            Odeslat
+          </button>
+        </form>
+      </Card>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Scroll reveal
+  if (typeof window !== 'undefined') {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  }
+</script>
+

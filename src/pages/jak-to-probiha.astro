@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import FAQSchema from '../components/FAQSchema.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { processSteps, faq } from '../data/content';
+---
+
+<BaseLayout 
+  title="Jak to probíhá - Proces tvorby webu | ŠkolníWeby"
+  description="Detailní popis procesu tvorby školního webu od prvního kontaktu po spuštění. Co od vás potřebujeme a jak probíhá spolupráce."
+>
+  <Hero 
+    title="Jak to probíhá"
+    subtitle="Od prvního kontaktu po spuštění webu - průhledný proces krok za krokem"
+  />
+
+  <!-- Process Timeline -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 scroll-reveal">Proces krok za krokem</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          {processSteps.map((step, index) => (
+            <div class="flex gap-6 scroll-reveal">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                  {index + 1}
+                </div>
+              </div>
+              <div class="flex-1 pb-8 border-l-2 border-gray-200 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
+                <p class="text-gray-600">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Co od vás potřebujeme -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 scroll-reveal">Co od vás potřebujeme</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <Card class="scroll-reveal">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">Přístupy a obsah</h3>
+          <ul class="space-y-2 text-gray-600 text-sm">
+            <li>• Přístupy k současnému webu (pokud existuje)</li>
+            <li>• Obsahové materiály (texty, obrázky, dokumenty)</li>
+            <li>• Logo a firemní barvy školy</li>
+          </ul>
+        </Card>
+        <Card class="scroll-reveal">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">Kontakt a komunikace</h3>
+          <ul class="space-y-2 text-gray-600 text-sm">
+            <li>• Kontakt na osobu, která bude web spravovat</li>
+            <li>• Možnost konzultací během procesu</li>
+            <li>• Zpětná vazba na návrhy</li>
+          </ul>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 scroll-reveal">Často kladené otázky</h2>
+      <FAQAccordion faqs={faq} />
+      <FAQSchema faqs={faq} />
+    </div>
+  </section>
+
+  <CTABanner 
+    title="Máte další otázky? Rádi vám odpovíme"
+    ctaText="Kontaktovat nás"
+    ctaHref="/kontakt"
+  />
+</BaseLayout>
+
+<script>
+  // Scroll reveal
+  if (typeof window !== 'undefined') {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  }
+</script>
+

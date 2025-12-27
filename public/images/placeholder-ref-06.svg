@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <rect width="100%" height="100%" fill="#f7f7ff" />
+  <text x="30" y="50" font-family="Inter, Arial, sans-serif" font-size="22" fill="#6b21a8" font-weight="700">Ukázka školy 6</text>
+  <rect x="30" y="80" width="540" height="280" rx="12" fill="#fff" stroke="#efedff" />
+  <text x="40" y="120" fill="#999">Obrázek - nahraďte</text>
+  <text x="40" y="150" fill="#666" font-size="14">Ideální rozměry: 600×400 (karta) • 1200×800 (desktop)</text>
+</svg>
