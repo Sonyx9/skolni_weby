@@ -23,19 +23,25 @@ export interface FAQ {
   answer: string;
 }
 
+// Helper pro správné cesty s base path
+const getImagePath = (path: string) => {
+  const base = import.meta.env.BASE_URL;
+  return path.startsWith('/') ? `${base}${path.slice(1)}` : `${base}${path}`;
+};
+
 export const references: Reference[] = [
-  { id: '1', title: 'Mateřská škola', type: 'ms', city: 'Praha', image: '/images/placeholder-ref-01.svg' },
-  { id: '2', title: 'Základní škola', type: 'zs', city: 'Brno', image: '/images/placeholder-ref-02.svg' },
-  { id: '3', title: 'Střední škola', type: 'ss', city: 'Ostrava', image: '/images/placeholder-ref-03.svg' },
-  { id: '4', title: 'Základní škola', type: 'zs', city: 'Plzeň', image: '/images/placeholder-ref-04.svg' },
-  { id: '5', title: 'Mateřská škola', type: 'ms', city: 'Liberec', image: '/images/placeholder-ref-05.svg' },
-  { id: '6', title: 'Střední škola', type: 'ss', city: 'Olomouc', image: '/images/placeholder-ref-06.svg' },
-  { id: '7', title: 'Základní umělecká škola', type: 'zus', city: 'České Budějovice', image: '/images/placeholder-ref-07.svg' },
-  { id: '8', title: 'Základní škola', type: 'zs', city: 'Hradec Králové', image: '/images/placeholder-ref-08.svg' },
-  { id: '9', title: 'Mateřská škola', type: 'ms', city: 'Ústí nad Labem', image: '/images/placeholder-ref-09.svg' },
-  { id: '10', title: 'Střední škola', type: 'ss', city: 'Pardubice', image: '/images/placeholder-ref-10.svg' },
-  { id: '11', title: 'Základní škola', type: 'zs', city: 'Zlín', image: '/images/placeholder-ref-11.svg' },
-  { id: '12', title: 'Mateřská škola', type: 'ms', city: 'Karlovy Vary', image: '/images/placeholder-ref-12.svg' },
+  { id: '1', title: 'Mateřská škola', type: 'ms', city: 'Praha', image: getImagePath('/images/placeholder-ref-01.svg') },
+  { id: '2', title: 'Základní škola', type: 'zs', city: 'Brno', image: getImagePath('/images/placeholder-ref-02.svg') },
+  { id: '3', title: 'Střední škola', type: 'ss', city: 'Ostrava', image: getImagePath('/images/placeholder-ref-03.svg') },
+  { id: '4', title: 'Základní škola', type: 'zs', city: 'Plzeň', image: getImagePath('/images/placeholder-ref-04.svg') },
+  { id: '5', title: 'Mateřská škola', type: 'ms', city: 'Liberec', image: getImagePath('/images/placeholder-ref-05.svg') },
+  { id: '6', title: 'Střední škola', type: 'ss', city: 'Olomouc', image: getImagePath('/images/placeholder-ref-06.svg') },
+  { id: '7', title: 'Základní umělecká škola', type: 'zus', city: 'České Budějovice', image: getImagePath('/images/placeholder-ref-07.svg') },
+  { id: '8', title: 'Základní škola', type: 'zs', city: 'Hradec Králové', image: getImagePath('/images/placeholder-ref-08.svg') },
+  { id: '9', title: 'Mateřská škola', type: 'ms', city: 'Ústí nad Labem', image: getImagePath('/images/placeholder-ref-09.svg') },
+  { id: '10', title: 'Střední škola', type: 'ss', city: 'Pardubice', image: getImagePath('/images/placeholder-ref-10.svg') },
+  { id: '11', title: 'Základní škola', type: 'zs', city: 'Zlín', image: getImagePath('/images/placeholder-ref-11.svg') },
+  { id: '12', title: 'Mateřská škola', type: 'ms', city: 'Karlovy Vary', image: getImagePath('/images/placeholder-ref-12.svg') },
 ];
 
 export const pricingTiers: PricingTier[] = [
