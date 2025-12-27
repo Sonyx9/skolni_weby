@@ -25,7 +25,7 @@ const filteredReferences = selectedType === 'vse'
       <!-- Filters -->
       <div class="flex flex-wrap justify-center gap-3 mb-12 scroll-reveal">
         <a 
-          href="/ukazky?typ=vse"
+          href={getUrl('/ukazky?typ=vse')}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedType === 'vse' 
               ? 'bg-accent text-white' 
@@ -35,7 +35,7 @@ const filteredReferences = selectedType === 'vse'
           Vše
         </a>
         <a 
-          href="/ukazky?typ=ms"
+          href={getUrl('/ukazky?typ=ms')}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedType === 'ms' 
               ? 'bg-accent text-white' 
@@ -45,7 +45,7 @@ const filteredReferences = selectedType === 'vse'
           MŠ
         </a>
         <a 
-          href="/ukazky?typ=zs"
+          href={getUrl('/ukazky?typ=zs')}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedType === 'zs' 
               ? 'bg-accent text-white' 
@@ -55,7 +55,7 @@ const filteredReferences = selectedType === 'vse'
           ZŠ
         </a>
         <a 
-          href="/ukazky?typ=ss"
+          href={getUrl('/ukazky?typ=ss')}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedType === 'ss' 
               ? 'bg-accent text-white' 
@@ -65,7 +65,7 @@ const filteredReferences = selectedType === 'vse'
           SŠ
         </a>
         <a 
-          href="/ukazky?typ=zus"
+          href={getUrl('/ukazky?typ=zus')}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedType === 'zus' 
               ? 'bg-accent text-white' 

@@ -9,6 +9,7 @@ import FAQSchema from '../components/FAQSchema.astro';
 import ServiceSchema from '../components/ServiceSchema.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { references, pricingTiers, faq } from '../data/content';
+import { getUrl } from '../lib/utils';
 ---
 
 <BaseLayout 
@@ -216,7 +217,7 @@ import { references, pricingTiers, faq } from '../data/content';
         ))}
       </div>
       <div class="text-center scroll-reveal">
-        <a href="/ukazky" class="inline-block px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors text-lg">
+        <a href={getUrl('/ukazky')} class="inline-block px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors text-lg">
           Všechny ukázky
         </a>
       </div>
@@ -343,7 +344,7 @@ import { references, pricingTiers, faq } from '../data/content';
           </div>
         </div>
         <div class="text-center scroll-reveal">
-          <a href="/jak-to-probiha" class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
+          <a href={getUrl('/jak-to-probiha')} class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
             Podívat se na detail procesu
           </a>
         </div>

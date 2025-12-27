@@ -1,4 +1,5 @@
 ---
+import { getUrl } from '../lib/utils';
 interface Props {
   name: string;
   subtitle: string;
@@ -42,7 +43,7 @@ const { name, subtitle, price, priceNote, features, recommended, cta } = Astro.p
     </ul>
   </div>
 
-  <a href="/kontakt" class={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all ${
+  <a href={getUrl('/kontakt')} class={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all ${
     recommended 
       ? 'bg-accent text-white hover:bg-brand' 
       : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
