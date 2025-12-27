@@ -7,6 +7,7 @@ interface Props {
   image?: string;
 }
 const { title, subtitle, primaryCta, secondaryCta, image } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
@@ -26,12 +27,12 @@ const { title, subtitle, primaryCta, secondaryCta, image } = Astro.props;
         
         <div class="flex flex-col sm:flex-row gap-4">
           {primaryCta && (
-            <a href={primaryCta.href} class="px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-all transform hover:scale-105 text-center text-lg">
+            <a href={primaryCta.href.startsWith('/') ? `${base}${primaryCta.href.slice(1)}` : primaryCta.href} class="px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-all transform hover:scale-105 text-center text-lg">
               {primaryCta.text}
             </a>
           )}
           {secondaryCta && (
-            <a href={secondaryCta.href} class="px-8 py-4 bg-white text-brand font-semibold rounded-lg border-2 border-brand hover:bg-primary-50 transition-all text-center text-lg">
+            <a href={secondaryCta.href.startsWith('/') ? `${base}${secondaryCta.href.slice(1)}` : secondaryCta.href} class="px-8 py-4 bg-white text-brand font-semibold rounded-lg border-2 border-brand hover:bg-primary-50 transition-all text-center text-lg">
               {secondaryCta.text}
             </a>
           )}

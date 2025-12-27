@@ -1,12 +1,14 @@
 ---
+import { getUrl } from '../lib/utils';
 const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md transition-all duration-300 border-b border-transparent">
   <div class="container-custom">
     <div class="flex items-center justify-between h-20 md:h-24 gap-6">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-4">
+      <a href={base} class="flex items-center gap-4">
         <img src="https://lukaskoula.com/wp-content/uploads/2025/12/skolni-weby-logo-modra-webp.webp" alt="ŠkolníWeby logo" class="h-10 sm:h-12" />
         <span class="sr-only">ŠkolníWeby</span>
       </a>
@@ -14,16 +16,16 @@ const currentPath = Astro.url.pathname;
       <!-- Center pill navigation (desktop) -->
       <div class="hidden lg:flex items-center mx-auto">
         <nav class="nav-pill flex items-center gap-8 px-6 py-2 rounded-full">
-          <a href="/ukazky" class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/ukazky' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
+          <a href={getUrl('/ukazky')} class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/ukazky' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
             Ukázky
           </a>
-          <a href="/cenik" class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/cenik' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
+          <a href={getUrl('/cenik')} class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/cenik' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
             Ceník
           </a>
-          <a href="/jak-to-probiha" class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/jak-to-probiha' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
+          <a href={getUrl('/jak-to-probiha')} class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/jak-to-probiha' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
             Jak to probíhá
           </a>
-          <a href="/kontakt" class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/kontakt' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
+          <a href={getUrl('/kontakt')} class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/kontakt' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
             Kontakt
           </a>
         </nav>
@@ -31,7 +33,7 @@ const currentPath = Astro.url.pathname;
 
       <!-- Right actions -->
       <div class="flex items-center gap-4">
-        <a href="/kontakt" class="px-5 py-3 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors">
+        <a href={getUrl('/kontakt')} class="px-5 py-3 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors">
           Nezávazná nabídka
         </a>
 
@@ -47,19 +49,19 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden lg:hidden pb-4 border-t border-transparent mt-2">
       <div class="flex flex-col gap-4 pt-4">
-        <a href="/ukazky" class={`text-base font-medium transition-colors ${currentPath === '/ukazky' ? 'text-brand' : 'text-gray-700'}`}>
+        <a href={getUrl('/ukazky')} class={`text-base font-medium transition-colors ${currentPath === '/ukazky' ? 'text-brand' : 'text-gray-700'}`}>
           Ukázky
         </a>
-        <a href="/cenik" class={`text-base font-medium transition-colors ${currentPath === '/cenik' ? 'text-brand' : 'text-gray-700'}`}>
+        <a href={getUrl('/cenik')} class={`text-base font-medium transition-colors ${currentPath === '/cenik' ? 'text-brand' : 'text-gray-700'}`}>
           Ceník
         </a>
-        <a href="/jak-to-probiha" class={`text-base font-medium transition-colors ${currentPath === '/jak-to-probiha' ? 'text-brand' : 'text-gray-700'}`}>
+        <a href={getUrl('/jak-to-probiha')} class={`text-base font-medium transition-colors ${currentPath === '/jak-to-probiha' ? 'text-brand' : 'text-gray-700'}`}>
           Jak to probíhá
         </a>
-        <a href="/kontakt" class={`text-base font-medium transition-colors ${currentPath === '/kontakt' ? 'text-brand' : 'text-gray-700'}`}>
+        <a href={getUrl('/kontakt')} class={`text-base font-medium transition-colors ${currentPath === '/kontakt' ? 'text-brand' : 'text-gray-700'}`}>
           Kontakt
         </a>
-        <a href="/kontakt" class="px-4 py-2 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors text-center">
+        <a href={getUrl('/kontakt')} class="px-4 py-2 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors text-center">
           Nezávazná nabídka
         </a>
       </div>
