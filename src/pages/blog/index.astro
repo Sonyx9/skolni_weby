@@ -4,28 +4,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getUrl } from '../../lib/utils';
 ---
 
-<BaseLayout title="Blog | ŠkolníWeby" description="Aktuálity, tipy a postupy pro správu školního webu">
+<BaseLayout title="Přesměrování" description="Přesměrování na nové umístění článků">
+  <head>
+    <meta http-equiv="refresh" content="0;url=/clanky" />
+  </head>
   <section class="section bg-white">
     <div class="container-custom">
-      <div class="mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Blog</h1>
-        <p class="text-lg text-gray-600">Tipy, návody a novinky ze světa školních webů.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Modelový článek -->
-        <article class="bg-white rounded-lg shadow-sm overflow-hidden">
-          <a href={getUrl('/blog/modelovy-clanek')} class="block hover:opacity-95">
-            <img src="/images/og-image.webp" alt="Modelový článek" class="w-full h-48 object-cover" />
-            <div class="p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-2">Jak vytvořit přehledný školní web: krok za krokem</h2>
-              <p class="text-gray-600 mb-4">Jednoduchý průvodce, který pomůže škole zorganizovat obsah tak, aby ho rodiče rychle našli.</p>
-              <div class="text-sm text-gray-500">Publikováno: 28. prosince 2025 · 5 min čtení</div>
-            </div>
-          </a>
-        </article>
-
-      </div>
+      <p>Probíhá přesměrování na <a href="/clanky">/clanky</a>...</p>
     </div>
   </section>
 </BaseLayout>
