@@ -1,0 +1,59 @@
+---
+interface Props {
+  text: string;
+  previewLines?: number;
+  title?: string;
+}
+
+const { text, previewLines = 5, title = 'Prompt' } = Astro.props as Props;
+const lines = text.split('\n');
+const preview = lines.slice(0, previewLines).join('\n');
+const isTruncated = lines.length > previewLines;
+const id = `prompt-modal-${Math.random().toString(36).slice(2)}`;
+---
+
+<div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+  <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+    <h3 class="text-sm font-semibold text-gray-900">{title}</h3>
+    {isTruncated && (
+      <button id={`${id}-open`} class="text-sm font-medium text-brand hover:text-primary-800">
+        Zobrazit celý prompt
+      </button>
+    )}
+  </div>
+
+  <div class="px-4 py-3">
+    <pre class="text-sm text-gray-800 whitespace-pre-wrap break-words">{preview}{isTruncated ? '\n…' : ''}</pre>
+  </div>
+</div>
+
+{isTruncated && (
+  <div id={id} class="hidden fixed inset-0 z-50 bg-black/50 p-4 flex items-center justify-center">
+    <div class="bg-white w-full max-w-3xl rounded-lg shadow-lg">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+        <h3 class="text-sm font-semibold text-gray-900">{title}</h3>
+        <button id={`${id}-close`} class="text-sm font-medium text-gray-600 hover:text-gray-900">Zavřít</button>
+      </div>
+      <div class="px-4 py-4">
+        <pre class="text-sm text-gray-800 whitespace-pre-wrap break-words">{text}</pre>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  if (typeof window !== 'undefined') {
+    const openBtn = document.getElementById(`${id}-open`);
+    const modal = document.getElementById(`${id}`);
+    const closeBtn = document.getElementById(`${id}-close`);
+
+    openBtn?.addEventListener('click', () => modal?.classList.remove('hidden'));
+    closeBtn?.addEventListener('click', () => modal?.classList.add('hidden'));
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modal?.classList.add('hidden');
+    });
+  }
+</script>
