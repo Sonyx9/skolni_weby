@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: 'https://skolni-weby.cz',
+  // Pro GitHub Pages použijeme base path, site může být undefined nebo GitHub Pages URL
   base: '/skolni_weby/',
   integrations: [
     tailwind({
@@ -13,5 +13,8 @@ export default defineConfig({
     }),
     sitemap(),
   ],
+  build: {
+    assets: '_assets',
+  },
 });
 
