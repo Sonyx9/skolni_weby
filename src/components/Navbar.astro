@@ -22,6 +22,9 @@ const base = import.meta.env.BASE_URL;
           <a href={getUrl('/cenik')} class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/cenik' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
             Ceník
           </a>
+          <a href={getUrl('/blog')} class={`text-base md:text-lg font-medium transition-colors ${currentPath.startsWith('/blog') ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
+            Blog
+          </a>
           <a href={getUrl('/jak-to-probiha')} class={`text-base md:text-lg font-medium transition-colors ${currentPath === '/jak-to-probiha' ? 'text-brand' : 'text-gray-700 hover:text-brand'}`}>
             Jak to probíhá
           </a>
@@ -54,6 +57,9 @@ const base = import.meta.env.BASE_URL;
         </a>
         <a href={getUrl('/cenik')} class={`text-base font-medium transition-colors ${currentPath === '/cenik' ? 'text-brand' : 'text-gray-700'}`}>
           Ceník
+        </a>
+        <a href={getUrl('/blog')} class={`text-base font-medium transition-colors ${currentPath.startsWith('/blog') ? 'text-brand' : 'text-gray-700'}`}>
+          Blog
         </a>
         <a href={getUrl('/jak-to-probiha')} class={`text-base font-medium transition-colors ${currentPath === '/jak-to-probiha' ? 'text-brand' : 'text-gray-700'}`}>
           Jak to probíhá
