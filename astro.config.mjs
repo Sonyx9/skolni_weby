@@ -13,8 +13,5 @@ export default defineConfig({
     }),
     sitemap(),
   ],
-  build: {
-    assets: '_assets',
-  },
 });
 
