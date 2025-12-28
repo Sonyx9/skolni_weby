@@ -4,62 +4,65 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 ---
 
 <ArticleLayout
-  title="Jak vytvořit přehledný školní web: krok za krokem"
-  description="Krátký přehled toho nejdůležitějšího, co by měl školní web obsahovat, aby jej rodiče jednoduše používali."
+  title="Povinné informace na webu školy: co musí obsahovat a jak je řešit přehledně v roce 2025"
+  description="Přehled povinných informací pro školní web, jejich struktury a praktických kroků, jak je udržet aktuální a snadno dohledatelné."
   cover="/images/og-image.webp"
-  coverAlt="Ilustrace přehledného školního webu"
+  coverAlt="Povinné informace na webu školy – přehledný web 2025"
   date="2025-12-28"
   author="Redakce ŠkolníWeby"
-  readingTime="5 min čtení"
-  tags={["přístupnost","povinné informace","web pro školu"]}
-  faq={[{ question: 'Co musí obsahovat školní web?', answer: 'Základní povinné informace jako kontakty, důležité dokumenty a provozní informace.' }]}
+  readingTime="6 min čtení"
+  tags={["povinné informace","web pro školu","přístupnost"]}
+  faq={[
+    { question: 'Co jsou povinné informace na webu školy?', answer: 'Identifikační údaje, kontakty a dokumenty vyplývající z legislativy – školní řád, výroční zprávy, přijímací řízení a zásady ochrany osobních údajů.' },
+    { question: 'Kde je mít na webu?', answer: 'Na jednom místě – samostatná sekce Dokumenty + jasné menu O škole / Kontakty, aby byly dohledatelné do 1–2 kliků.' },
+    { question: 'Jak často aktualizovat?', answer: 'Průběžně, vždy po změně dokumentu nebo údajů. Přidejte datum poslední aktualizace k souborům a dělejte kvartální kontrolu.' }
+  ]}
   cta={{ text: 'Nezávazná konzultace', href: '/kontakt' }}
 >
   <section>
     <div class="prose lg:prose-xl max-w-none mb-6">
-      <p class="lead">Dobře strukturovaný školní web šetří čas rodičům i učitelům. V tomto článku najdete konkrétní kroky, jak obsah uspořádat a co nezapomenout z hlediska povinných informací a přístupnosti.</p>
+      <p class="lead">Web školy je dnes hlavní komunikační kanál pro rodiče i zřizovatele. Povinné informace musí být kompletní, aktuální a snadno dohledatelné – jinak se zvyšuje počet dotazů a klesá důvěryhodnost školy.</p>
 
       <div class="border-l-4 border-brand/20 bg-brand/5 p-4 rounded-md my-6">
         <strong>Co se v článku dozvíte:</strong>
         <ul class="mt-2 list-disc ml-5">
-          <li>Jakou strukturu by měl mít školní web</li>
-          <li>Nejčastější chyby a jak se jim vyhnout</li>
-          <li>Praktické tipy pro přístupnost a organizaci dokumentů</li>
+          <li>Jaké povinné informace a dokumenty musí web školy obsahovat</li>
+          <li>Jak je uspořádat, aby byly na 1–2 kliky</li>
+          <li>Jak přirozeně propojit přístupnost, SEO a správu obsahu</li>
         </ul>
       </div>
 
-      <h2>1. Přehledná struktura</h2>
-      <p>Vytvořte jasná oddělení a logické menu. Doporučené sekce:</p>
+      <h2>Povinné informace na webu školy: co to znamená</h2>
+      <p>Povinné informace nejsou formalita. Jsou to údaje a dokumenty, které mají rodičům, žákům i veřejnosti dát jasný přehled o fungování školy. Nejčastější problém není v chybějícím obsahu, ale v neaktuálnosti a špatné dohledatelnosti.</p>
+
+      <h2>Základní identifikační údaje</h2>
+      <p>Uveďte identitu školy a kontakty na jednom místě (O škole / Kontakty) a udržujte je čitelné:</p>
       <ul>
-        <li><strong>Kontakty</strong> – kontaktní osoby, provozní doba, mapa</li>
-        <li><strong>Dokumenty</strong> – školní řád, přihlášky, rozvrhy</li>
-        <li><strong>Aktuality</strong> – krátké oznámení s datem a odkazem na detail</li>
-        <li><strong>Stravování</strong> – jídelníčky a informace o platbách</li>
+        <li>Název školy, adresa, IČO, datová schránka</li>
+        <li>Kontaktní e-mail a telefon, ideálně i provozní doba</li>
+        <li>Informace o zřizovateli – často opomíjené</li>
       </ul>
 
-      <h2>2. Stránka s dokumenty</h2>
-      <p>Uspořádejte dokumenty do kategorií a přidejte datum poslední aktualizace. Každý důležitý dokument by měl být snadno stažitelný.</p>
+      <h2>Dokumenty, které musí být snadno dohledatelné</h2>
+      <p>Vytvořte samostatnou sekci „Dokumenty“ s jasným členěním a datem aktualizace u každého souboru:</p>
+      <ul>
+        <li>Školní řád, výroční zprávy</li>
+        <li>Informace k přijímacímu řízení</li>
+        <li>Zásady ochrany osobních údajů (GDPR)</li>
+      </ul>
+      <p>Vyhněte se chaosu: sjednoťte pojmenování souborů a hlídejte aktuálnost. Ukažte datum poslední aktualizace.</p>
 
-      <figure>
-        <img src="/images/og-image.webp" alt="Ukázka rozložení dokumentů na stránce školního webu" loading="lazy" />
-        <figcaption>Schéma: doporučená struktura dokumentů (ilustrace)</figcaption>
-      </figure>
+      <h2>Informace, které rodiče skutečně hledají</h2>
+      <p>Rodiče nehledají paragrafy, ale praktické věci: aktuální sdělení, termíny, zápis, kontakty na pedagogy. Dejte je dopředu a snižte tím počet dotazů na sekretariát.</p>
 
-      <h2>3. Aktuality a oznámení</h2>
-      <p>Udržujte feed jednoduchý: datum, perex a odkaz. Přidejte štítky pro rychlé filtrování.</p>
+      <h2>Přístupnost jako základ</h2>
+      <p>Jednoduchá struktura, dostatečný kontrast, logické nadpisy a alternativní popisy obrázků pomáhají uživatelům i SEO. Přístupnost a vyhledávače jdou ruku v ruce.</p>
 
-      <blockquote>
-        <p><strong>Tip:</strong> přidejte štítky jako "akce", "důležité", "přihlášky" pro lepší orientaci.</p>
-      </blockquote>
+      <h2>Proč řešit strukturu dlouhodobě</h2>
+      <p>Web nesmí záviset na jednom člověku. Jasná struktura a jednoduchá správa zajistí, že web zůstane aktuální i při personálních změnách.</p>
 
-      <h3>Ukázková šablona aktuality</h3>
-      <pre><code>Datum: 1. ledna 2026
-Nadpis: Zahájení školního roku
-Perex: Informace o zahájení a změnách
-Obsah: Detaily a odkazy na dokumenty</code></pre>
-
-      <h2>Závěr</h2>
-      <p>Dobře navržený školní web šetří čas a snižuje množství dotazů. Pokud potřebujete pomoc s návrhem nebo migrací obsahu, ozvěte se nám.</p>
+      <h2>Shrnutí</h2>
+      <p>Povinné informace na webu školy jsou základem důvěryhodnosti. Klíčové je jejich srozumitelné uspořádání, pravidelná aktualizace a důraz na čitelnost a přístupnost. Pokud potřebujete návrh struktury nebo migraci obsahu, ozvěte se nám.</p>
     </div>
   </section>
 
