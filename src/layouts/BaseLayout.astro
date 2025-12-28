@@ -64,10 +64,32 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
         "telephone": "+420776831780"
       }
     })} />
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .skip-link:focus {
+        position: static;
+        left: auto;
+        width: auto;
+        height: auto;
+        padding: 0.5rem 1rem;
+        background: white;
+        border-radius: 0.25rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        z-index: 60;
+      }
+    </style>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Přeskočit na obsah</a>
     <Navbar />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

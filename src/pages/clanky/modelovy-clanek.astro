@@ -36,10 +36,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <p class="text-lg text-gray-600">Krátký přehled toho nejdůležitějšího, co by měl školní web obsahovat, aby jej rodiče jednoduše používali.</p>
       </header>
 
+      <nav aria-label="Obsah článku" class="mb-6">
+        <ul class="flex flex-col gap-2 text-sm text-gray-600">
+          <li><a href="#prehledna-struktura" class="hover:underline">1. Přehledná struktura</a></li>
+          <li><a href="#stranka-s-dokumenty" class="hover:underline">2. Stránka s dokumenty</a></li>
+          <li><a href="#aktuality" class="hover:underline">3. Aktuality a oznámení</a></li>
+        </ul>
+      </nav>
+
       <div class="prose lg:prose-xl max-w-none mb-8">
         <p class="lead">Dobře strukturovaný školní web šetří čas rodičům i učitelům. Níže najdete konkrétní kroky a doporučení, jak obsah uspořádat tak, aby byl snadno dostupný.</p>
 
-        <h2>1. Přehledná struktura</h2>
+        <h2 id="prehledna-struktura">1. Přehledná struktura</h2>
         <p>Vytvořte jasná oddělení a logické menu. Doporučené sekce:</p>
         <ul>
           <li><strong>Kontakty</strong> – kontaktní osoby, provozní doba, mapka.</li>
@@ -48,10 +56,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <li><strong>Stravování</strong> – jídelníčky a informace o platbách.</li>
         </ul>
 
-        <h2>2. Stránka s dokumenty</h2>
+        <h2 id="stranka-s-dokumenty">2. Stránka s dokumenty</h2>
         <p>Důležité dokumenty musí být snadno stažitelné a označené verzí/datem. Zvažte filtrování podle typu (rozvrhy, přihlášky, informace pro rodiče).</p>
 
-        <h2>3. Aktuality a oznámení</h2>
+        <h2 id="aktuality">3. Aktuality a oznámení</h2>
         <p>Udržujte feed jednoduchý: každá položka by měla mít datum, krátký perex a odkaz na celý článek nebo PDF.</p>
 
         <blockquote>
