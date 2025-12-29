@@ -4,8 +4,9 @@ interface Props {
   type: string;
   city: string;
   image: string;
+  url?: string;
 }
-const { title, type, city, image } = Astro.props;
+const { title, type, city, image, url } = Astro.props;
 
 const typeLabels: Record<string, string> = {
   ms: 'MŠ',
@@ -15,7 +16,7 @@ const typeLabels: Record<string, string> = {
 };
 ---
 
-<a href="#" class="block group">
+<a href={url || '#'} class="block group" target={url ? '_blank' : undefined} rel={url ? 'noreferrer' : undefined}>
   <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
     <div class="aspect-video bg-gray-100 overflow-hidden img-with-label">
       <img 

@@ -4,6 +4,7 @@ export interface Reference {
   type: 'ms' | 'zs' | 'ss' | 'zus';
   city: string;
   image: string;
+  url?: string;
   description?: string;
 }
 
@@ -30,18 +31,30 @@ const getImagePath = (path: string) => {
 };
 
 export const references: Reference[] = [
-  { id: '1', title: 'Mateřská škola', type: 'ms', city: 'Praha', image: getImagePath('/images/placeholder-ref-01.svg') },
-  { id: '2', title: 'Základní škola', type: 'zs', city: 'Brno', image: getImagePath('/images/placeholder-ref-02.svg') },
-  { id: '3', title: 'Střední škola', type: 'ss', city: 'Ostrava', image: getImagePath('/images/placeholder-ref-03.svg') },
-  { id: '4', title: 'Základní škola', type: 'zs', city: 'Plzeň', image: getImagePath('/images/placeholder-ref-04.svg') },
-  { id: '5', title: 'Mateřská škola', type: 'ms', city: 'Liberec', image: getImagePath('/images/placeholder-ref-05.svg') },
-  { id: '6', title: 'Střední škola', type: 'ss', city: 'Olomouc', image: getImagePath('/images/placeholder-ref-06.svg') },
-  { id: '7', title: 'Základní umělecká škola', type: 'zus', city: 'České Budějovice', image: getImagePath('/images/placeholder-ref-07.svg') },
-  { id: '8', title: 'Základní škola', type: 'zs', city: 'Hradec Králové', image: getImagePath('/images/placeholder-ref-08.svg') },
-  { id: '9', title: 'Mateřská škola', type: 'ms', city: 'Ústí nad Labem', image: getImagePath('/images/placeholder-ref-09.svg') },
-  { id: '10', title: 'Střední škola', type: 'ss', city: 'Pardubice', image: getImagePath('/images/placeholder-ref-10.svg') },
-  { id: '11', title: 'Základní škola', type: 'zs', city: 'Zlín', image: getImagePath('/images/placeholder-ref-11.svg') },
-  { id: '12', title: 'Mateřská škola', type: 'ms', city: 'Karlovy Vary', image: getImagePath('/images/placeholder-ref-12.svg') },
+  {
+    id: 'spstjbc',
+    title: 'Střední průmyslová škola technická',
+    type: 'ss',
+    city: 'Jablonec nad Nisou',
+    image: 'https://www.broken-mouse.cz/wp-content/uploads/2025/12/screencapture-spstjbc-cz-2025-12-29-09_40_53-scaled.webp',
+    url: 'https://spstjbc.cz/',
+  },
+  {
+    id: 'gymjbc',
+    title: 'Gymnázium U Balvanu',
+    type: 'ss',
+    city: 'Jablonec nad Nisou',
+    image: 'https://www.broken-mouse.cz/wp-content/uploads/2025/12/screencapture-gymjbc-cz-2025-12-29-09_40_21-scaled.webp',
+    url: 'https://www.gymjbc.cz/',
+  },
+  {
+    id: 'zssumava',
+    title: 'ZŠ Šumava',
+    type: 'zs',
+    city: 'Jablonec nad Nisou',
+    image: 'https://www.broken-mouse.cz/wp-content/uploads/2025/12/screencapture-zssumava-cz-2025-12-29-09_41_16-scaled.webp',
+    url: 'https://www.zssumava.cz/',
+  },
 ];
 
 export const pricingTiers: PricingTier[] = [

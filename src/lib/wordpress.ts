@@ -18,6 +18,7 @@ export interface Reference {
   type: 'ms' | 'zs' | 'ss' | 'zus';
   city: string;
   image: string;
+  url?: string;
   description?: string;
 }
 
@@ -74,6 +75,7 @@ export async function getReferences(): Promise<Reference[]> {
         post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
         post.featured_media_url ||
         '/images/placeholder-ref-01.webp',
+      url: post.acf?.url || post.link,
       description: post.excerpt?.rendered || post.acf?.description,
     }));
   } catch (error) {
