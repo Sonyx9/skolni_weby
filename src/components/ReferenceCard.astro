@@ -1,12 +1,13 @@
 ---
 interface Props {
+  id: string;
   title: string;
   type: string;
   city: string;
   image: string;
   url?: string;
 }
-const { title, type, city, image, url } = Astro.props;
+const { id, title, type, city, image, url } = Astro.props;
 
 const typeLabels: Record<string, string> = {
   ms: 'MŠ',
@@ -14,17 +15,38 @@ const typeLabels: Record<string, string> = {
   ss: 'SŠ',
   zus: 'ZUŠ',
 };
+
+const modalId = `ref-modal-${id}`;
 ---
 
-<a href={url || '#'} class="block group" target={url ? '_blank' : undefined} rel={url ? 'noreferrer' : undefined}>
+<article 
+  class="block group cursor-pointer"
+  data-modal={modalId}
+  role="button"
+  tabindex="0"
+  aria-label={`Otevřít náhled ${title}`}
+>
   <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-    <div class="aspect-video bg-gray-100 overflow-hidden img-with-label">
+    <div class="relative aspect-video bg-gray-100 overflow-hidden img-with-label">
       <img 
         src={image} 
         alt={`${title} - ${city}`}
-        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
         loading="lazy"
       />
+      {url && (
+        <a 
+          href={url} 
+          target="_blank" 
+          rel="noreferrer"
+          class="absolute top-3 right-3 inline-flex items-center gap-2 px-3 py-1.5 bg-white/90 text-sm font-semibold text-brand rounded-full shadow-sm border border-brand/20 hover:bg-brand hover:text-white transition-colors"
+          data-action="web-link"
+          aria-label="Otevřít web v novém okně"
+        >
+          Web
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" /></svg>
+        </a>
+      )}
       {image && image.includes('placeholder') && (
         <span class="img-label">NAHRADIT</span>
       )}
@@ -37,5 +59,80 @@ const typeLabels: Record<string, string> = {
       <h3 class="font-bold text-lg text-gray-900">{title}</h3>
     </div>
   </div>
-</a>
+</article>
+
+<div id={modalId} class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+  <div class="absolute inset-0 bg-black/70" data-close></div>
+  <div class="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full overflow-hidden" data-modal-body>
+    <button class="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-black/90 transition-colors" data-close aria-label="Zavřít náhled">
+      ×
+    </button>
+    <div class="bg-gray-900">
+      <img src={image} alt={`${title} - ${city}`} class="w-full h-full max-h-[80vh] object-contain object-top" loading="lazy" />
+    </div>
+    <div class="p-4 flex items-center justify-between gap-4">
+      <div>
+        <p class="text-sm text-gray-500">{typeLabels[type] || type} • {city}</p>
+        <p class="font-semibold text-gray-900">{title}</p>
+      </div>
+      {url && (
+        <a 
+          href={url} 
+          target="_blank" 
+          rel="noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-brand text-white font-semibold rounded-lg hover:bg-accent transition-colors"
+        >
+          Otevřít web
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" /></svg>
+        </a>
+      )}
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const modal = document.getElementById(modalId);
+    const card = document.querySelector(`[data-modal="${modalId}"]`);
+
+    if (modal && card) {
+      const closeButtons = modal.querySelectorAll('[data-close]');
+      const modalBody = modal.querySelector('[data-modal-body]');
+
+      const openModal = () => modal.classList.remove('hidden');
+      const closeModal = () => modal.classList.add('hidden');
+
+      card.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target && (target as HTMLElement).closest('[data-action="web-link"]')) return;
+        openModal();
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openModal();
+        }
+      });
+
+      closeButtons.forEach((btn) => btn.addEventListener('click', closeModal));
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal || (event.target as HTMLElement).dataset.close !== undefined) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeModal();
+      });
+
+      if (modalBody) {
+        modal.addEventListener('click', (event) => {
+          if (!(event.target as HTMLElement).closest('[data-modal-body]')) closeModal();
+        });
+      }
+    }
+  }
+</script>
 
