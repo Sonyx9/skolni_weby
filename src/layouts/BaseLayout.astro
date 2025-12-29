@@ -95,11 +95,10 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
     </main>
     <Footer />
     <script>
-      // Sticky navbar with blur effect
+      // Sticky navbar + spolehlivé odhalení prvků se scroll-reveal
       if (typeof window !== 'undefined') {
         const navbar = document.querySelector('nav');
         if (navbar) {
-          let lastScroll = 0;
           window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             if (currentScroll > 50) {
@@ -107,8 +106,35 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
             } else {
               navbar.classList.remove('scrolled');
             }
-            lastScroll = currentScroll;
           });
+        }
+
+        const initScrollReveal = () => {
+          const items = document.querySelectorAll('.scroll-reveal');
+          if (!items.length) return;
+
+          // Fallback: pokud není IntersectionObserver, všechno rovnou zobraz
+          if (!('IntersectionObserver' in window)) {
+            items.forEach((el) => el.classList.add('revealed'));
+            return;
+          }
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+          items.forEach((el) => observer.observe(el));
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initScrollReveal);
+        } else {
+          initScrollReveal();
         }
       }
     </script>
