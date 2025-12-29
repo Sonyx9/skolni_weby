@@ -96,7 +96,6 @@ def contact():
     try:
         data = validate_form(request.form)
         payload = build_message(data)
-        send_email(payload)
         send_slack(payload)
     except ValueError as exc:
         return jsonify({"status": "error", "message": str(exc)}), 400
