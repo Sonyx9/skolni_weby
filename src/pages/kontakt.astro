@@ -210,13 +210,29 @@ import Card from '../components/Card.astro';
       
       try {
         const formData = new FormData(form);
+        
+        // Log for debugging
+        console.log('Odeslání formuláře na:', form.action);
+        console.log('Data:', {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          school: formData.get('school'),
+          message: formData.get('message')
+        });
+        
         const response = await fetch(form.action, {
           method: 'POST',
           body: formData
         });
         
+        console.log('Odpověď status:', response.status);
+        const responseData = await response.json().catch(() => ({}));
+        console.log('Odpověď data:', responseData);
+        
         if (response.ok) {
           // Success
+          console.log('Formulář úspěšně odeslán');
           formSuccess.classList.remove('hidden');
           form.reset();
           
@@ -225,11 +241,12 @@ import Card from '../components/Card.astro';
             window.location.href = '/podekovani';
           }, 2000);
         } else {
-          throw new Error('Chyba při odesílání');
+          throw new Error(responseData.message || 'Chyba při odesílání: ' + response.status);
         }
       } catch (error) {
+        console.error('Chyba formuláře:', error);
         // Error
-        formError.textContent = '❌ Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nás kontaktujte přímo.';
+        formError.textContent = '❌ ' + error.message;
         formError.classList.remove('hidden');
         
         // Reset button state
