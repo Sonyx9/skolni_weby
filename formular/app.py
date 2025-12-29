@@ -16,7 +16,8 @@ class Config:
     smtp_user = os.environ.get("SMTP_USER", "")
     smtp_pass = os.environ.get("SMTP_PASS", "")
     smtp_from = os.environ.get("SMTP_FROM", "")
-    smtp_to = os.environ.get("SMTP_TO", "")
+    smtp_to = os.environ.get("SMTP_TO", "info@broken-mouse.cz")
+    smtp_cc = os.environ.get("SMTP_CC", "wp-weby@broken-mouse.cz")
     slack_webhook = os.environ.get("SLACK_WEBHOOK_URL", "")
     thank_you_url = os.environ.get(
         "THANK_YOU_URL",
@@ -26,15 +27,13 @@ class Config:
 
 def build_message(data: Dict[str, str]) -> str:
     lines = [
-        "Nový kontakt z formuláře",
+        "Nový formulář ze stránky Školní weby",
         "",
-        f"Jméno: {data.get('name', '')}",
+        f"Jméno školy: {data.get('school', '')}",
+        f"Kontaktní osoba: {data.get('name', '')}",
         f"Email: {data.get('email', '')}",
         f"Telefon: {data.get('phone', '')}",
-        f"Škola: {data.get('school', '')}",
-        "",
-        "Zpráva:",
-        data.get("message", ""),
+        f"Zpráva: {data.get('message', '')}",
     ]
     return "\n".join(lines)
 
@@ -48,6 +47,8 @@ def send_email(payload: str) -> None:
     msg["Subject"] = "ŠkolníWeby – nový kontakt"
     msg["From"] = Config.smtp_from
     msg["To"] = Config.smtp_to
+    if Config.smtp_cc:
+        msg["Cc"] = Config.smtp_cc
     msg.set_content(payload)
 
     context = ssl.create_default_context()
@@ -71,7 +72,7 @@ def send_slack(payload: str) -> None:
 
 
 def validate_form(form: Dict[str, str]) -> Dict[str, str]:
-    required = ["name", "email", "message"]
+    required = ["name", "email", "phone"]
     for field in required:
         if not form.get(field):
             raise ValueError(f"Missing field: {field}")
