@@ -8,6 +8,8 @@ interface Props {
   subtitleWide?: boolean;
 }
 const { title, subtitle, primaryCta, secondaryCta, image, subtitleWide = false } = Astro.props;
+const hasImage = Boolean(image);
+const gridColsClass = hasImage ? 'lg:grid-cols-2' : 'lg:grid-cols-1';
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -15,7 +17,7 @@ const base = import.meta.env.BASE_URL;
   <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-transparent to-primary-50 opacity-50"></div>
   
   <div class="container-custom relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class={`grid grid-cols-1 ${gridColsClass} gap-12 items-center`}>
       <div class="fade-in-up">
         <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 text-balance leading-tight">
           {title}
