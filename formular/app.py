@@ -9,7 +9,7 @@ from flask import Flask, jsonify, redirect, request
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "OPTIONS"]}}, supports_credentials=True)
+CORS(app)
 
 
 class Config:
