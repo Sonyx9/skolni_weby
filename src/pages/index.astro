@@ -126,10 +126,10 @@ import { getUrl } from '../lib/utils';
       </div>
 
       <script>
-        // Simple count-up animation triggered when in viewport
+        // Po načtení stránky čísla jedou hned; pokud je IO, animace spustíme až při zobrazení
         (function() {
           if (typeof window === 'undefined') return;
-          const easeOutQuad = t => t*(2-t);
+          const easeOutQuad = (t) => t * (2 - t);
           const animate = (el, target, duration) => {
             let start = null;
             const initial = 0;
@@ -144,18 +144,29 @@ import { getUrl } from '../lib/utils';
             requestAnimationFrame(tick);
           };
 
-          const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-              if (!entry.isIntersecting) return;
-              const el = entry.target;
-              const target = parseInt(el.dataset.target, 10) || 0;
-              const duration = parseInt(el.dataset.duration, 10) || 1500;
-              animate(el, target, duration);
-              obs.unobserve(el);
-            });
-          }, { threshold: 0.3 });
+          const startAnim = (el) => {
+            const target = parseInt(el.dataset.target, 10) || 0;
+            const duration = parseInt(el.dataset.duration, 10) || 1500;
+            animate(el, target, duration);
+          };
 
-          document.querySelectorAll('.count').forEach(el => observer.observe(el));
+          const counters = Array.from(document.querySelectorAll('.count'));
+          if (!counters.length) return;
+
+          if (!('IntersectionObserver' in window)) {
+            counters.forEach(startAnim);
+            return;
+          }
+
+          const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              startAnim(entry.target as HTMLElement);
+              obs.unobserve(entry.target);
+            });
+          }, { threshold: 0.2, rootMargin: '0px 0px -20%' });
+
+          counters.forEach((el) => observer.observe(el));
         })();
       </script>
     </div>
