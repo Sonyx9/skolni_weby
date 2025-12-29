@@ -5,8 +5,9 @@ interface Props {
   primaryCta?: { text: string; href: string };
   secondaryCta?: { text: string; href: string };
   image?: string;
+  subtitleWide?: boolean;
 }
-const { title, subtitle, primaryCta, secondaryCta, image } = Astro.props;
+const { title, subtitle, primaryCta, secondaryCta, image, subtitleWide = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -20,7 +21,7 @@ const base = import.meta.env.BASE_URL;
           {title}
         </h1>
         {subtitle && (
-          <p class="text-lg md:text-xl lg:text-2xl text-gray-600 mb-10 text-balance leading-relaxed max-w-2xl">
+          <p class={`text-lg md:text-xl lg:text-2xl text-gray-600 mb-10 text-balance leading-relaxed ${subtitleWide ? 'max-w-none' : 'max-w-2xl'}`}>
             {subtitle}
           </p>
         )}
