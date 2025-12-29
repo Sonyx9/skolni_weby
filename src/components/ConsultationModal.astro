@@ -1,0 +1,90 @@
+---
+const { email = 'info@broken-mouse.cz', phone = '+420776831780' } = Astro.props;
+---
+
+<div id="consultation-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+  <div class="absolute inset-0 bg-black/70" data-close-modal></div>
+  <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 overflow-hidden" data-modal-body>
+    <button 
+      class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-gray-200 transition-colors" 
+      data-close-modal
+      aria-label="Zavřít"
+    >
+      ×
+    </button>
+
+    <div class="text-center">
+      <!-- Fotka v kolečku -->
+      <div class="mb-6 flex justify-center">
+        <img 
+          src="https://www.broken-mouse.cz/wp-content/uploads/2024/08/Ondra-Cinatl-150x150.jpg"
+          alt="Ing. Ondřej Činátl"
+          class="w-24 h-24 rounded-full object-cover border-4 border-primary-50 shadow-md"
+        />
+      </div>
+
+      <!-- Jméno a pozice -->
+      <h3 class="text-xl font-bold text-gray-900 mb-1">Ing. Ondřej Činátl</h3>
+      <p class="text-sm text-gray-600 mb-6">Váš specialista na školní web</p>
+
+      <!-- Kontakty -->
+      <div class="space-y-4">
+        <a 
+          href={`tel:${phone}`}
+          class="block w-full px-4 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors"
+        >
+          📞 {phone}
+        </a>
+        <a 
+          href={`mailto:${email}`}
+          class="block w-full px-4 py-3 bg-primary-50 text-brand font-semibold rounded-lg hover:bg-primary-100 transition-colors"
+        >
+          ✉️ {email}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const modal = document.getElementById('consultation-modal');
+    const closeButtons = document.querySelectorAll('[data-close-modal]');
+    const consultationLinks = document.querySelectorAll('[data-consultation]');
+
+    const openModal = () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    };
+
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    consultationLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    closeButtons.forEach((btn) => {
+      btn.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  }
+</script>
+
+<style>
+  #consultation-modal.flex {
+    display: flex;
+  }
+</style>

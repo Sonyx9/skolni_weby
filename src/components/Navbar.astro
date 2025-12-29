@@ -36,9 +36,9 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Right actions -->
       <div class="flex items-center gap-4">
-        <a href={getUrl('/kontakt')} class="px-5 py-3 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors">
+        <button data-consultation class="px-5 py-3 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors cursor-pointer">
           Konzultace zdarma
-        </a>
+        </button>
 
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-button" class="lg:hidden p-2 text-gray-700 hover:text-brand transition-colors" aria-label="Otevřít menu">
@@ -67,9 +67,9 @@ const base = import.meta.env.BASE_URL;
         <a href={getUrl('/kontakt')} class={`text-base font-medium transition-colors ${currentPath === '/kontakt' ? 'text-brand' : 'text-gray-700'}`}>
           Kontakt
         </a>
-        <a href={getUrl('/kontakt')} class="px-4 py-2 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors text-center">
+        <button data-consultation class="px-4 py-2 bg-accent text-white text-base font-medium rounded-lg hover:bg-brand transition-colors text-center w-full cursor-pointer">
           Konzultace zdarma
-        </a>
+        </button>
       </div>
     </div>
   </div>
