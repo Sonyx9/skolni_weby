@@ -25,7 +25,7 @@ Processes contact form submissions: accepts POST, sends email, posts a Slack web
 2) Build command: `pip install -r requirements.txt`
 3) Start command: `gunicorn app:app --bind 0.0.0.0:${PORT}`
 4) In **Variables**, set the envs above (PORT is provided by Railway).
-5) Deploy; Railway will assign a URL, e.g. `https://skolniweby-formular.up.railway.app`.
+5) Deploy; Railway will assign a URL, e.g. `https://skolniwebyformular-production.up.railway.app`.
 
 ## Frontend wiring
 - In Astro `src/pages/kontakt.astro`, set `<form action="https://…railway.app/api/contact" method="post">` and remove `disabled` + `pointer-events-none`/opacity.
