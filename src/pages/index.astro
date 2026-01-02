@@ -287,60 +287,49 @@ import { getUrl } from '../lib/utils';
         </p>
       </div>
 
-      <script>
-        // Animace čísel - spustí se při načtení nebo v viewportu
-        (function() {
-          if (typeof window === 'undefined') return;
+      <script is:inline>
+        // Animace čísel - spustí se při načtení
+        function initCounters() {
           const easeOutQuad = (t) => t * (2 - t);
+          
           const animate = (el, target, duration) => {
-            if (!el || el.dataset.animated) return;
+            if (!el || el.dataset.animated === 'true') return;
             el.dataset.animated = 'true';
+            
             let start = null;
             const initial = 0;
+            
             const tick = (ts) => {
               if (!start) start = ts;
               const elapsed = ts - start;
               const progress = Math.min(elapsed / duration, 1);
               const value = Math.round(initial + (target - initial) * easeOutQuad(progress));
               el.textContent = value;
-              if (progress < 1) requestAnimationFrame(tick);
+              if (progress < 1) {
+                requestAnimationFrame(tick);
+              }
             };
+            
             requestAnimationFrame(tick);
           };
-
-          const startAnim = (el) => {
+          
+          const counters = document.querySelectorAll('.count');
+          counters.forEach((el) => {
             const target = parseInt(el.dataset.target, 10) || 0;
             const duration = parseInt(el.dataset.duration, 10) || 1500;
             animate(el, target, duration);
-          };
-
-          const initCounters = () => {
-            const counters = document.querySelectorAll('.count:not([data-animated])');
-            if (!counters.length) return;
-
-            if (!('IntersectionObserver' in window)) {
-              counters.forEach(startAnim);
-              return;
-            }
-
-            const observer = new IntersectionObserver((entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  startAnim(entry.target);
-                  observer.unobserve(entry.target);
-                }
-              });
-            }, { threshold: 0.1 });
-
-            counters.forEach((el) => observer.observe(el));
-          };
-
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initCounters);
-          } else {
-            initCounters();
-          }
-        })();
+          });
+        }
+        
+        // Spustit, jakmile je DOM připravený
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initCounters);
+        } else {
+          initCounters();
+        }
+        
+        // Pro hot reload v development
+        window.addEventListener('astro:page-load', initCounters);
       </script>
     </div>
   </section>
