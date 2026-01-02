@@ -155,7 +155,6 @@ def contact():
         data = validate_form(form_data)
         payload = build_message(data)
         send_slack(payload)
-        send_email(payload)
         
         return jsonify({"status": "success", "message": "Formulář byl úspěšně odeslán", "redirect": Config.thank_you_url}), 200
     except ValueError as exc:
