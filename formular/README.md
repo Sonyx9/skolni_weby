@@ -18,10 +18,7 @@ Processes contact form submissions: accepts POST, sends email, posts a Slack web
 - `THANK_YOU_URL` – redirect target on success (e.g. `https://skolniweby.cz/podekovani`)
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_TO` – email
 - `SLACK_WEBHOOK_URL` – incoming Slack webhook
-- `RECAPTCHA_PROJECT_ID` – Google Cloud Project ID (required for reCAPTCHA Enterprise)
-- `RECAPTCHA_SITE_KEY` – reCAPTCHA Enterprise Site Key (required for spam protection)
-- `RECAPTCHA_ACTION` – reCAPTCHA action name (default: "submit")
-- `GOOGLE_APPLICATION_CREDENTIALS` – path to Google Cloud service account JSON (or use default credentials)
+- `RECAPTCHA_SECRET_KEY` – Google reCAPTCHA secret key (required for spam protection, default: 6Lc6Wz4sAAAAAFWmCBmzP-op4ujnaSuL7-ZBZbvS)
 
 ## Railway deploy
 1) Create a Railway project, set **Root Directory** to `formular`.
@@ -38,7 +35,8 @@ Processes contact form submissions: accepts POST, sends email, posts a Slack web
 
 ## Notes
 - If SMTP or Slack are not configured, the backend logs and skips those sends.
-- If `RECAPTCHA_PROJECT_ID` or `RECAPTCHA_SITE_KEY` are not set, reCAPTCHA verification is skipped (useful for development).
+- If `RECAPTCHA_SECRET_KEY` is not set, reCAPTCHA verification is skipped (useful for development).
 - It validates `name`, `email`, `phone`, `message`; missing fields return 400 JSON.
-- Form submissions are protected by Google reCAPTCHA Enterprise v3 to prevent spam.
-- Backend uses official Google Cloud reCAPTCHA Enterprise API for verification.
+- Form submissions are protected by Google reCAPTCHA v3 to prevent spam.
+- Backend uses standard Google reCAPTCHA REST API for verification.
+- **Site Key for frontend:** `6Lc6Wz4sAAAAAKBGcYL-AIK-WKSJz1JzpED9QXH0`

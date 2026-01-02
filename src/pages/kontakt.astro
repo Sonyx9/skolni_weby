@@ -375,10 +375,11 @@ import Card from '../components/Card.astro';
           formSuccess.classList.remove('hidden');
           form.reset();
           
-          // Redirect after 2 seconds
+          // Přesměruj na děkovací stránku
           setTimeout(() => {
-            window.location.href = '/podekovani';
-          }, 2000);
+            const redirectUrl = responseData.redirect || '/podekovani';
+            window.location.href = redirectUrl;
+          }, 1500);
         } else {
           throw new Error(responseData.message || 'Chyba při odesílání: ' + response.status);
         }
