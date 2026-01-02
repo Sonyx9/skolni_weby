@@ -36,6 +36,13 @@ const { email = 'info@broken-mouse.cz', phone = '+420776831780' } = Astro.props;
           {phone}
         </a>
         <a 
+          href="/kontakt#contactForm"
+          class="block w-full px-4 py-3 bg-primary-50 text-brand font-semibold rounded-lg hover:bg-primary-100 transition-colors"
+          data-close-modal-link
+        >
+          Vyplnit formulář
+        </a>
+        <a 
           href={`mailto:${email}`}
           class="block w-full px-4 py-3 bg-primary-50 text-brand font-semibold rounded-lg hover:bg-primary-100 transition-colors"
         >
@@ -51,6 +58,7 @@ const { email = 'info@broken-mouse.cz', phone = '+420776831780' } = Astro.props;
     const modal = document.getElementById('consultation-modal');
     const closeButtons = document.querySelectorAll('[data-close-modal]');
     const consultationLinks = document.querySelectorAll('[data-consultation]');
+    const closeModalLinks = document.querySelectorAll('[data-close-modal-link]');
 
     const openModal = () => {
       modal.classList.remove('hidden');
@@ -71,6 +79,10 @@ const { email = 'info@broken-mouse.cz', phone = '+420776831780' } = Astro.props;
 
     closeButtons.forEach((btn) => {
       btn.addEventListener('click', closeModal);
+    });
+
+    closeModalLinks.forEach((link) => {
+      link.addEventListener('click', closeModal);
     });
 
     modal.addEventListener('click', (e) => {

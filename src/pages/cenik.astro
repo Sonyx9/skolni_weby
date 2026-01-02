@@ -3,16 +3,194 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import PricingCard from '../components/PricingCard.astro';
 import CTABanner from '../components/CTABanner.astro';
-import { pricingTiers } from '../data/content';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import FAQSchema from '../components/FAQSchema.astro';
+import { pricingTiers, pricingFaq } from '../data/content';
 ---
 
 <BaseLayout 
   title="Ceník - Balíčky a servis | ŠkolníWeby"
   description="Transparentní ceník našich balíčků pro mateřské, základní a střední školy. Start, Standard a Pro balíčky s různými úrovněmi služeb."
 >
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://skolniweby.cz/cenik#webpage",
+        "url": "https://skolniweby.cz/cenik",
+        "name": "Ceník webových stránek pro školy",
+        "inLanguage": "cs-CZ",
+        "description": "Ceník webových stránek pro školy. Balíčky START, STANDARD a PRO + měsíční správa webu (hosting, zabezpečení, aktualizace a drobné úpravy).",
+        "isPartOf": {
+          "@id": "https://skolniweby.cz/#website"
+        },
+        "about": {
+          "@id": "https://skolniweby.cz/#organization"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://skolniweby.cz/cenik#service",
+        "name": "Webové stránky pro školy",
+        "description": "Návrh, tvorba a dlouhodobý servis webových stránek pro mateřské, základní a střední školy v České republice.",
+        "provider": {
+          "@id": "https://skolniweby.cz/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Czech Republic"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Školy a vzdělávací instituce"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "@id": "https://skolniweby.cz/cenik#catalog",
+          "name": "Balíčky webových stránek pro školy a měsíční správa webu",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "@id": "https://skolniweby.cz/cenik#start",
+              "name": "Balíček START",
+              "description": "Jednoduchý, přehledný a legislativně správný web pro menší školy. Moderní responzivní design, až 10 sekcí, galerie a aktuality, kontaktní formulář, základní SEO optimalizace, školení správce (2 hodiny), přenos obsahu z původního webu a 6 měsíců podpory. Cena od 38 500 Kč.",
+              "price": "38500",
+              "priceCurrency": "CZK",
+              "availability": "https://schema.org/InStock",
+              "url": "https://skolniweby.cz/cenik"
+            },
+            {
+              "@type": "Offer",
+              "@id": "https://skolniweby.cz/cenik#standard",
+              "name": "Balíček STANDARD",
+              "description": "Doporučeno. Ideální řešení pro základní a menší střední školy. Vše z balíčku START + až 20 sekcí, rozšířená galerie, kalendář akcí, integrace jídelníčku, vyhledávání, rozšířené SEO, školení správce (4 hodiny) a 12 měsíců podpory. Cena od 55 000 Kč.",
+              "price": "55000",
+              "priceCurrency": "CZK",
+              "availability": "https://schema.org/InStock",
+              "url": "https://skolniweby.cz/cenik"
+            },
+            {
+              "@type": "Offer",
+              "@id": "https://skolniweby.cz/cenik#pro",
+              "name": "Balíček PRO",
+              "description": "Ideální pro větší střední školy a učiliště. Vše z balíčku STANDARD + neomezené sekce, integrace e-learningu, portál pro rodiče, rozšířené formuláře, API integrace, pokročilé SEO, školení správce (8 hodin), 12 měsíců podpory a prioritní servis. Individuální cena na vyžádání.",
+              "price": "0",
+              "priceCurrency": "CZK",
+              "availability": "https://schema.org/InStock",
+              "url": "https://skolniweby.cz/cenik"
+            },
+            {
+              "@type": "Offer",
+              "@id": "https://skolniweby.cz/cenik#mesicni-sprava",
+              "name": "Měsíční správa webu",
+              "description": "Měsíční správa webu školy (hosting pro jeden web, 5 GB prostoru, SSL certifikát včetně subdomén, automatické malware skeny, 24/7 ochrana proti kyberútokům, obnovení/odvirování při napadení nebo pádu, pravidelné aktualizace systému a pluginů, pravidelné zálohování a obnovení ze zálohy. Drobné úpravy zdarma do 1 hodiny měsíčně: editace do 15 minut / zásah, konzultace a pomoc se správou obsahu). Sleva 20 % na větší servisní zásahy a větší úpravy webu.",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "820",
+                "priceCurrency": "CZK",
+                "unitText": "MONTH"
+              },
+              "availability": "https://schema.org/InStock",
+              "url": "https://skolniweby.cz/cenik"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://skolniweby.cz/cenik#faq",
+        "inLanguage": "cs-CZ",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kolik stojí webové stránky pro školu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Balíček START je od 38 500 Kč, balíček STANDARD od 55 000 Kč. Balíček PRO naceňujeme individuálně podle požadavků školy a rozsahu funkcí."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je uvedená cena konečná, nebo se může změnit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "U balíčků START a STANDARD jde o cenu „od", která se může lišit podle rozsahu obsahu, specifických funkcí a náročnosti převodu ze starého webu. U balíčku PRO je cena vždy individuální a stanovujeme ji na základě konkrétního zadání."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co je zahrnuto v ceně webu školy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Součástí je návrh struktury a designu webu, technické řešení a spuštění, práce s obsahem (včetně přenosu ze starého webu), školení správce a podpora dle zvoleného balíčku (START 6 měsíců, STANDARD 12 měsíců, PRO 12 měsíců)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Platí se web jednorázově, nebo formou měsíčních poplatků?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tvorba webu se hradí jednorázově podle zvoleného balíčku. Volitelně nabízíme měsíční správu webu za 820 Kč/měsíc (hosting, zabezpečení, aktualizace, zálohy a drobné úpravy do 1 hodiny měsíčně)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jsou v ceně zahrnuty i budoucí úpravy webu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Běžné drobné úpravy lze řešit v rámci měsíční správy webu (do 1 hodiny měsíčně). Větší úpravy nebo nové funkce naceňujeme individuálně – vždy dopředu a transparentně."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je možné přizpůsobit balíček konkrétní škole?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. Balíčky slouží jako přehledný základ, ale řešení umíme upravit podle typu školy, množství dokumentů, požadovaných modulů a rozpočtu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak je to s veřejnými zakázkami a rozpočtem školy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cenovou nabídku připravujeme přehledně a srozumitelně tak, aby byla použitelná pro schvalování vedením školy nebo zřizovatelem. U větších projektů nastavíme rozsah a plnění tak, aby šlo vše transparentně doložit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je v ceně i přístupnost a splnění zákonných požadavků?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. Web stavíme tak, aby byl přehledný a legislativně správný – včetně základních požadavků na přístupnost a zveřejňování povinných informací školy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co když si nejsme jistí, který balíček zvolit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stačí krátká nezávazná konzultace. Doporučíme balíček podle typu školy (MŠ/ZŠ/SŠ), rozsahu obsahu a toho, jaké funkce web opravdu potřebuje."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je možné začít s menším řešením a web později rozšířit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. Web je možné postupně rozšiřovat o další sekce a funkce, jak porostou potřeby školy – bez nutnosti dělat web znovu."
+            }
+          }
+        ]
+      }
+    ]
+  })} />
+
   <Hero 
-    title="Balíčky a servis"
-    subtitle="Každá škola i instituce má jiné potřeby, proto nabízíme přehledné balíčky doplněné o pravidelný servis. Díky tomu máte jistotu, že váš web nejen dobře vypadá, ale je také bezpečný, aktuální a dlouhodobě funkční. O technické zajištění, úpravy i podporu se staráme my, vy se můžete soustředit na svou hlavní činnost."
+    title="Webové balíčky pro školy"
+    subtitle="Každá škola má jiné potřeby, proto nabízíme přehledné balíčky webových stránek pro školy, doplněné o pravidelný servis a technickou podporu. Díky tomu máte jistotu, že web školy je nejen moderní a přehledný, ale také bezpečný, aktuální a dlouhodobě funkční. O technické zajištění, úpravy a podporu se staráme my – vy se můžete soustředit na chod školy a vzdělávání."
     subtitleWide={true}
   />
 
@@ -67,6 +245,16 @@ import { pricingTiers } from '../data/content';
           20 % sleva na větší servisní zásahy či větší úpravy webu
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 scroll-reveal">Často kladené otázky k ceně webových stránek pro školy</h2>
+      <p class="text-center text-gray-600 mb-12 scroll-reveal">Odpovědi na otázky, které školy řeší při výběru balíčku</p>
+      <FAQAccordion faqs={pricingFaq} />
+      <FAQSchema faqs={pricingFaq} />
     </div>
   </section>
 

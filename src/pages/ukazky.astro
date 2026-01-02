@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ReferenceCard from '../components/ReferenceCard.astro';
+import CTABanner from '../components/CTABanner.astro';
 import { references } from '../data/content';
 import { getUrl } from '../lib/utils';
 
@@ -14,17 +15,89 @@ const filteredReferences = selectedType === 'vse'
   title="Ukázky školních webů | ŠkolníWeby"
   description="Podívejte se na weby, které jsme vytvořili pro mateřské, základní a střední školy po celé České republice."
 >
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://skolniweby.cz/ukazky#webpage",
+        "url": "https://skolniweby.cz/ukazky",
+        "name": "Ukázky školních webů",
+        "inLanguage": "cs-CZ",
+        "description": "Ukázky webových stránek pro mateřské, základní a střední školy z celé České republiky. Reálné školní weby vytvořené a spravované projektem Školní weby.",
+        "isPartOf": {
+          "@id": "https://skolniweby.cz/#website"
+        },
+        "about": {
+          "@id": "https://skolniweby.cz/#organization"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://skolniweby.cz/ukazky#portfolio",
+        "name": "Ukázky webových stránek pro školy",
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "numberOfItems": 3,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "EducationalOrganization",
+              "name": "Střední průmyslová škola technická",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jablonec nad Nisou",
+                "addressCountry": "CZ"
+              },
+              "url": "https://skolniweby.cz/ukazky"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "EducationalOrganization",
+              "name": "Gymnázium U Balvanu",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jablonec nad Nisou",
+                "addressCountry": "CZ"
+              },
+              "url": "https://skolniweby.cz/ukazky"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "EducationalOrganization",
+              "name": "ZŠ Šumava",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jablonec nad Nisou",
+                "addressCountry": "CZ"
+              },
+              "url": "https://skolniweby.cz/ukazky"
+            }
+          }
+        ]
+      }
+    ]
+  })} />
+
   <section class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-primary-50 via-white to-primary-50">
     <div class="container-custom">
-      <div class="text-center mb-12 scroll-reveal">
+      <div class="mb-12 scroll-reveal">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Ukázky školních webů</h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Podívejte se na weby, které jsme vytvořili pro školy po celé České republice
+        <p class="text-lg text-gray-600 max-w-5xl">
+          Podívejte se na konkrétní ukázky webů mateřských, základních, středních i uměleckých škol, které jsme navrhli a dlouhodobě spravujeme. Každý web vznikl podle potřeb konkrétní školy, jejího vedení, rodičů i zřizovatele.
         </p>
       </div>
 
       <!-- Filters -->
-      <div class="flex flex-wrap justify-center gap-3 mb-12 scroll-reveal">
+      <div class="flex flex-wrap justify-center gap-3 mb-12 scroll-reveal hidden">
         <a 
           href={getUrl('/ukazky?typ=vse')}
           class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
@@ -85,5 +158,12 @@ const filteredReferences = selectedType === 'vse'
       </div>
     </div>
   </section>
+
+  <!-- Bottom CTA -->
+  <CTABanner 
+    title="Vyřešte web školy jednou provždy"
+    ctaText="Konzultace zdarma"
+    ctaHref="/kontakt"
+  />
 </BaseLayout>
 

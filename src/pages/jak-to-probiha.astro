@@ -5,37 +5,191 @@ import Card from '../components/Card.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import FAQSchema from '../components/FAQSchema.astro';
 import CTABanner from '../components/CTABanner.astro';
-import { processSteps, faq } from '../data/content';
+import { processSteps, processFaq } from '../data/content';
 ---
 
 <BaseLayout 
   title="Jak to probíhá - Proces tvorby webu | ŠkolníWeby"
   description="Detailní popis procesu tvorby školního webu od prvního kontaktu po spuštění. Co od vás potřebujeme a jak probíhá spolupráce."
 >
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://skolniweby.cz/jak-to-probiha#webpage",
+        "url": "https://skolniweby.cz/jak-to-probiha",
+        "name": "Jak probíhá tvorba webových stránek pro školu",
+        "inLanguage": "cs-CZ",
+        "description": "Jak probíhá tvorba webových stránek pro školy krok za krokem – od konzultace přes návrh struktury a design až po spuštění webu a podporu.",
+        "isPartOf": {
+          "@id": "https://skolniweby.cz/#website"
+        },
+        "about": {
+          "@id": "https://skolniweby.cz/#organization"
+        }
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://skolniweby.cz/jak-to-probiha#howto",
+        "name": "Proces tvorby webových stránek pro školu",
+        "description": "Přehledný postup tvorby webu školy od prvního kontaktu po spuštění a následný servis.",
+        "inLanguage": "cs-CZ",
+        "totalTime": "P8W",
+        "supply": [
+          { "@type": "HowToSupply", "name": "Podklady školy (texty, dokumenty, logo)" },
+          { "@type": "HowToSupply", "name": "Přístup ke stávajícímu webu (pokud existuje)" }
+        ],
+        "tool": [
+          { "@type": "HowToTool", "name": "Komunikační kanály (telefon, e-mail)" },
+          { "@type": "HowToTool", "name": "Redakční systém webu" }
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Úvodní konzultace",
+            "text": "Krátce si ujasníme typ školy, rozsah webu, potřebné funkce a termíny."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Návrh struktury webu",
+            "text": "Navrhneme přehledné menu a logické uspořádání obsahu včetně povinných informací."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Design webu",
+            "text": "Připravíme moderní responzivní vzhled a doladíme ho podle zpětné vazby školy."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Naplnění obsahem",
+            "text": "Převedeme a zpřehledníme obsah ze starého webu, nahrajeme dokumenty, aktuality a fotky."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Testování a spuštění",
+            "text": "Provedeme finální kontrolu a web bezpečně spustíme."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 6,
+            "name": "Školení a podpora",
+            "text": "Zaškolíme správce webu a zajistíme technickou podporu a servis po spuštění."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://skolniweby.cz/jak-to-probiha#faq",
+        "inLanguage": "cs-CZ",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kolik to trvá?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nejčastěji 4–8 týdnů podle rozsahu webu a rychlosti schvalování podkladů. U menších škol může být web hotový i dříve."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Umíte převést starý web?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. Převedeme obsah ze stávajícího webu (stránky, dokumenty, aktuality i galerii) a pomůžeme ho zpřehlednit, aby byl pro rodiče snadno dohledatelný."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kdo bude web spravovat?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Web může spravovat zaměstnanec školy bez IT znalostí. Součástí dodávky je školení správců a jednoduchá administrace."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak řešíte přístupnost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Přístupnost řešíme už při návrhu struktury a šablon: přehledná navigace, správné nadpisy, čitelnost a ovladatelnost na mobilu. Před spuštěním provádíme kontrolu klíčových prvků přístupnosti."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co servis?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Po spuštění zajišťujeme technickou podporu, aktualizace a bezpečnost webu. Rozsah servisu je daný zvoleným balíčkem a je vždy jasně popsaný."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak probíhá spolupráce?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Postupujeme krok za krokem: konzultace, struktura, design, obsah, testování a spuštění. Každý důležitý krok škola schvaluje, takže máte vše pod kontrolou."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co od nás potřebujete?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stačí základní podklady (logo, texty a dokumenty) a kontakt na odpovědnou osobu. Přístup ke starému webu pomůže s převodem, ale pokud ho nemáte, najdeme alternativu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Můžeme si vybrat design?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. Navrhneme design odpovídající typu a stylu školy a upravíme ho podle vaší zpětné vazby. Důraz klademe na přehlednost a použitelnost pro rodiče."
+            }
+          }
+        ]
+      }
+    ]
+  })} />
+
   <Hero 
-    title="Jak to probíhá"
-    subtitle="Od prvního kontaktu po spuštění webu - průhledný proces krok za krokem"
+    title="Tvorba webových stránek pro školu krok za krokem"
+    subtitle="Od prvního kontaktu po spuštění webu postupujeme podle jasně daného a ověřeného procesu. V každém kroku víte, co se bude dít, kolik času to zabere a co od vás budeme potřebovat."
+    subtitleWide={true}
   />
 
   <!-- Process Timeline -->
   <section class="section bg-white">
     <div class="container-custom">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 scroll-reveal">Proces krok za krokem</h2>
-      <div class="max-w-4xl mx-auto">
-        <div class="space-y-8">
-          {processSteps.map((step, index) => (
-            <div class="flex gap-6 scroll-reveal">
-              <div class="flex-shrink-0">
-                <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold">
-                  {index + 1}
+      <div style="display: flex; justify-content: center;">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 scroll-reveal">Proces krok za krokem</h2>
+          <div class="space-y-8">
+            {processSteps.map((step, index) => (
+              <div class="flex gap-6 scroll-reveal">
+                <div class="flex-shrink-0">
+                  <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                    {index + 1}
+                  </div>
+                </div>
+                <div class="flex-1 pb-8 border-l-2 border-gray-200 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">{step.title}</h3>
+                {step.subtitle && (
+                  <div class="bg-gray-50 rounded p-4">
+                    <h4 class="font-semibold text-gray-900 mb-2">{step.subtitle}</h4>
+                    <p class="text-sm text-gray-600">{step.details}</p>
+                  </div>
+                )}
                 </div>
               </div>
-              <div class="flex-1 pb-8 border-l-2 border-gray-200 pl-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-                <p class="text-gray-600">{step.description}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -43,24 +197,30 @@ import { processSteps, faq } from '../data/content';
 
   <!-- Co od vás potřebujeme -->
   <section class="section bg-gray-50">
-    <div class="container-custom">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 scroll-reveal">Co od vás potřebujeme</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <div class="container-custom max-w-4xl">
+      <div class="text-center mb-12 scroll-reveal">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Co od vás potřebujeme</h2>
+        <p class="text-gray-600">Abychom mohli připravit webové stránky pro vaši školu, budeme od vás potřebovat jen základní součinnost. Vše ostatní řešíme my.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card class="scroll-reveal">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">Přístupy a obsah</h3>
-          <ul class="space-y-2 text-gray-600 text-sm">
-            <li>• Přístupy k současnému webu (pokud existuje)</li>
-            <li>• Obsahové materiály (texty, obrázky, dokumenty)</li>
-            <li>• Logo a firemní barvy školy</li>
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Přístupy a obsah</h3>
+          <ul class="space-y-3 text-gray-600 text-sm">
+            <li>přístup k současnému webu školy (pokud existuje)</li>
+            <li>dostupné obsahové podklady (texty, dokumenty, fotografie)</li>
+            <li>logo školy a případně firemní / školní barvy</li>
           </ul>
+          <p class="text-sm text-gray-500 mt-4 pt-4 border-t border-gray-200">Pokud něco chybí, pomůžeme s doplněním nebo úpravou obsahu.</p>
         </Card>
         <Card class="scroll-reveal">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">Kontakt a komunikace</h3>
-          <ul class="space-y-2 text-gray-600 text-sm">
-            <li>• Kontakt na osobu, která bude web spravovat</li>
-            <li>• Možnost konzultací během procesu</li>
-            <li>• Zpětná vazba na návrhy</li>
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Kontakt a komunikace</h3>
+          <ul class="space-y-3 text-gray-600 text-sm">
+            <li>kontakt na osobu, která bude web školy spravovat</li>
+            <li>možnost krátkých konzultací během procesu</li>
+            <li>zpětná vazba k návrhům struktury a designu</li>
           </ul>
+          <p class="text-sm text-gray-500 mt-4 pt-4 border-t border-gray-200">Časová náročnost pro školu je minimální – vše řešíme efektivně a srozumitelně.</p>
         </Card>
       </div>
     </div>
@@ -69,9 +229,10 @@ import { processSteps, faq } from '../data/content';
   <!-- FAQ -->
   <section class="section bg-white">
     <div class="container-custom max-w-3xl">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 scroll-reveal">Často kladené otázky</h2>
-      <FAQAccordion faqs={faq} />
-      <FAQSchema faqs={faq} />
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 scroll-reveal">Často kladené otázky k průběhu spolupráce</h2>
+      <p class="text-center text-gray-600 mb-12 scroll-reveal">Odpovědi na otázky, které školy řeší během tvorby webu</p>
+      <FAQAccordion faqs={processFaq} />
+      <FAQSchema faqs={processFaq} />
     </div>
   </section>
 

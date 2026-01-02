@@ -21,6 +21,7 @@ class Config:
     smtp_to = os.environ.get("SMTP_TO", "info@broken-mouse.cz")
     smtp_cc = os.environ.get("SMTP_CC", "wp-weby@broken-mouse.cz")
     slack_webhook = os.environ.get("SLACK_WEBHOOK_URL", "")
+    recaptcha_secret = os.environ.get("RECAPTCHA_SECRET_KEY", "")
     thank_you_url = os.environ.get(
         "THANK_YOU_URL",
         "https://skolniweby.cz/podekovani",
@@ -73,8 +74,45 @@ def send_slack(payload: str) -> None:
     resp.raise_for_status()
 
 
+def verify_recaptcha(token: str, remote_ip: str | None = None) -> bool:
+    """Ověří reCAPTCHA token pomocí Google API."""
+    if not Config.recaptcha_secret:
+        app.logger.warning("reCAPTCHA secret not configured; skipping verification")
+        return True  # Pokud není nastaveno, povolíme odeslání (pro vývoj)
+
+    if not token:
+        return False
+
+    try:
+        data = {
+            "secret": Config.recaptcha_secret,
+            "response": token,
+        }
+        if remote_ip:
+            data["remoteip"] = remote_ip
+
+        resp = requests.post(
+            "https://www.google.com/recaptcha/api/siteverify",
+            data=data,
+            timeout=10,
+        )
+        resp.raise_for_status()
+        result = resp.json()
+
+        # reCAPTCHA v3 vrací score (0.0-1.0), v2 vrací success (bool)
+        if "score" in result:
+            # v3: score >= 0.5 je obvykle považováno za legitimní
+            return result.get("success", False) and result.get("score", 0) >= 0.5
+        else:
+            # v2: pouze success
+            return result.get("success", False)
+    except Exception as exc:
+        app.logger.exception(f"reCAPTCHA verification failed: {exc}")
+        return False
+
+
 def validate_form(form: Dict[str, str]) -> Dict[str, str]:
-    required = ["name", "email", "phone"]
+    required = ["name", "email", "phone", "message"]
     for field in required:
         if not form.get(field):
             raise ValueError(f"Missing field: {field}")
@@ -96,6 +134,13 @@ def health() -> str:
 @app.post("/api/contact")
 def contact():
     try:
+        # Ověření reCAPTCHA tokenu
+        recaptcha_token = request.form.get("g-recaptcha-response") or request.form.get("recaptcha_token")
+        remote_ip = request.environ.get("REMOTE_ADDR")
+        
+        if not verify_recaptcha(recaptcha_token, remote_ip):
+            return jsonify({"status": "error", "message": "reCAPTCHA verification failed"}), 400
+
         data = validate_form(request.form)
         payload = build_message(data)
         send_slack(payload)

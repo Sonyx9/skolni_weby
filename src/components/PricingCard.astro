@@ -24,10 +24,12 @@ const { name, subtitle, price, priceNote, features, recommended, cta } = Astro.p
   <div class="flex-1">
     <div class="text-center mb-6">
       <h3 class="text-2xl font-bold text-gray-900 mb-2">{name}</h3>
-      <p class="text-gray-600 text-sm mb-4">{subtitle}</p>
-      <div class="mb-2">
-        <span class="text-4xl font-bold text-gray-900">{price}</span>
-        {priceNote && <span class="text-gray-600 text-sm ml-2">{priceNote}</span>}
+      <p class="text-gray-600 text-sm mb-4 min-h-[72px] flex items-center justify-center">{subtitle}</p>
+      <div class="mb-2 min-h-[80px] flex items-center justify-center">
+        <div>
+          <span class="text-4xl font-bold text-gray-900 block">{price}</span>
+          {priceNote && <span class="text-gray-600 text-sm ml-2">{priceNote}</span>}
+        </div>
       </div>
     </div>
 

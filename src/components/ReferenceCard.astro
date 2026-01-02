@@ -6,8 +6,9 @@ interface Props {
   city: string;
   image: string;
   url?: string;
+  description?: string;
 }
-const { id, title, type, city, image, url } = Astro.props;
+const { id, title, type, city, image, url, description } = Astro.props;
 
 const typeLabels: Record<string, string> = {
   ms: 'MŠ',
@@ -56,7 +57,8 @@ const modalId = `ref-modal-${id}`;
         <span class="text-xs font-bold text-brand uppercase tracking-wide">{typeLabels[type] || type}</span>
         <span class="text-sm text-gray-500 font-medium">{city}</span>
       </div>
-      <h3 class="font-bold text-lg text-gray-900">{title}</h3>
+      <h3 class="font-bold text-lg text-gray-900 mb-2">{title}</h3>
+      {description && <p class="text-sm text-gray-600">{description}</p>}
     </div>
   </div>
 </article>

@@ -16,9 +16,162 @@ import { getUrl } from '../lib/utils';
   title="Moderní web pro školu, který rodiče opravdu používají | ŠkolníWeby"
   description="Tvoříme moderní, rychlé a přehledné weby pro školy. MŠ, ZŠ i SŠ. Rychlost, přehlednost, povinné informace a servis v jednom balíčku."
 >
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://skolniweby.cz/#organization",
+        "name": "Školní weby",
+        "legalName": "Broken Mouse s.r.o.",
+        "url": "https://skolniweby.cz/",
+        "email": "info@broken-mouse.cz",
+        "telephone": "+420776831780",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://skolniweby.cz/#logo",
+          "url": "https://lukaskoula.com/wp-content/uploads/2025/12/skolni-weby-logo-modra-webp.webp"
+        },
+        "image": [
+          "https://lukaskoula.com/wp-content/uploads/2025/12/skolni-weby-logo-modra-webp.webp"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jeronýmova 98/27",
+          "addressLocality": "Jablonecké Paseky",
+          "postalCode": "466 02",
+          "addressCountry": "CZ"
+        },
+        "taxID": "CZ08731811",
+        "vatID": "CZ08731811",
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "name": "IČO",
+            "value": "08731811"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "DIČ",
+            "value": "CZ08731811"
+          }
+        ],
+        "areaServed": {
+          "@type": "Country",
+          "name": "Czech Republic"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+420776831780",
+            "email": "info@broken-mouse.cz",
+            "contactType": "sales",
+            "availableLanguage": ["cs"]
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://skolniweby.cz/#website",
+        "url": "https://skolniweby.cz/",
+        "name": "Školní weby",
+        "inLanguage": "cs-CZ",
+        "publisher": {
+          "@id": "https://skolniweby.cz/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://skolniweby.cz/#webpage",
+        "url": "https://skolniweby.cz/",
+        "name": "Školní weby – moderní webové stránky pro školy",
+        "inLanguage": "cs-CZ",
+        "isPartOf": {
+          "@id": "https://skolniweby.cz/#website"
+        },
+        "about": {
+          "@id": "https://skolniweby.cz/#organization"
+        },
+        "primaryImageOfPage": {
+          "@id": "https://skolniweby.cz/#logo"
+        },
+        "description": "Vytváříme moderní, rychlé a přehledné webové stránky pro školy. Školní web, který rodiče opravdu používají – se snadnou správou, legislativními požadavky a dlouhodobým servisem.",
+        "relatedLink": [
+          "https://skolniweby.cz/kontakt/",
+          "https://skolniweby.cz/cenik",
+          "https://skolniweby.cz/jak-to-probiha"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://skolniweby.cz/#faq",
+        "inLanguage": "cs-CZ",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Co jsou webové stránky pro školy a k čemu slouží?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Webové stránky pro školy slouží jako hlavní informační zdroj pro rodiče, žáky i veřejnost. Umožňují přehledně zveřejňovat povinné informace, aktuality školy a usnadňují každodenní komunikaci."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Pro jaké školy weby vytváříte?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vytváříme webové stránky pro mateřské, základní, střední i umělecké školy po celé České republice. Řešení vždy přizpůsobujeme potřebám konkrétní školy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jsou školní weby v souladu se zákonnými požadavky?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. Weby navrhujeme tak, aby splňovaly požadavky na přístupnost dle WCAG, povinně zveřejňované informace školy i základní pravidla ochrany osobních údajů."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kdo se stará o správu webu školy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Web může spravovat zaměstnanec školy bez technických znalostí. Součástí je jednoduchá administrace, školení správců a dlouhodobá technická podpora."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak rychle může být web školy hotový?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Většina školních webů je hotová během několika týdnů od prvního kontaktu. Délka závisí na rozsahu a rychlosti schvalování podkladů."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kolik stojí webové stránky pro školu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cena se odvíjí od rozsahu a funkcí. Základní řešení začíná od desítek tisíc korun, přesnou cenu vždy stanovujeme nezávazně podle potřeb školy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Pomůžete i se starým webem školy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ano. Pomůžeme s přenosem obsahu ze stávajícího webu, jeho zpřehledněním a úpravou tak, aby odpovídal současným požadavkům školy i rodičů."
+            }
+          }
+        ]
+      }
+    ]
+  })} />
+
   <Hero 
-    title="Moderní web pro školu, který rodiče opravdu používají."
-    subtitle="Rychlý, přehledný a snadno spravovatelný web, který splňuje všechny povinné požadavky a rodiče na něm najdou vše, co potřebují."
+    title="Moderní webové stránky pro školu"
+    subtitle="Rychlý, přehledný a bezpečný školní web, který splňuje všechny zákonné povinnosti a umožňuje rodičům i žákům najít důležité informace během několika vteřin – z mobilu i počítače."
     primaryCta={{ text: "Chci nabídku", href: "/kontakt" }}
     secondaryCta={{ text: "Zobrazit ukázky", href: "/ukazky" }}
     image="https://www.broken-mouse.cz/wp-content/uploads/2021/05/Datovy-zdroj-9-1.svg"
@@ -28,9 +181,9 @@ import { getUrl } from '../lib/utils';
   <section class="section bg-white">
     <div class="container-custom">
       <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">S čím vám můžeme pomoci?</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Kompletní řešení webových stránek pro školy</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Tvoříme moderní, rychlé a přehledné weby pro školy. MŠ, ZŠ i SŠ. Rychlost, přehlednost, povinné informace a servis v jednom balíčku.
+          Navrhujeme a spravujeme moderní weby pro MŠ, ZŠ i SŠ, které jsou rychlé, přehledné a v souladu s legislativou. Postaráme se o techniku, obsah i dlouhodobý provoz – vy se můžete soustředit na chod školy.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -40,8 +193,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Rychlý a přístupný</h3>
-          <p class="text-gray-600 mb-6">Optimalizovaný pro rychlé načítání a splnění standardů přístupnosti WCAG 2.1</p>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Rychlé webové stránky splňující zákonné požadavky</h3>
+          <p class="text-gray-600 mb-6">Web školy je optimalizovaný pro rychlé načítání a splňuje standardy přístupnosti WCAG 2.1. Díky tomu je čitelný pro všechny uživatele a připravený na případnou kontrolu.</p>
           <a href={getUrl('/jak-to-probiha')} class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
             Více informací
           </a>
@@ -52,8 +205,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Snadná správa obsahu</h3>
-          <p class="text-gray-600 mb-6">Intuitivní systém, který zvládne spravovat kdokoliv ze školy bez technických znalostí</p>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Aktualizace webu zvládnete sami – bez IT znalostí</h3>
+          <p class="text-gray-600 mb-6">Intuitivní redakční systém umožňuje učitelům i vedení školy jednoduše upravovat aktuality, dokumenty i jídelníčky. Bez čekání, bez technických komplikací.</p>
           <a href={getUrl('/jak-to-probiha')} class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
             Více informací
           </a>
@@ -64,8 +217,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Bezpečnost a servis</h3>
-          <p class="text-gray-600 mb-6">Dlouhodobá podpora, školení a zajištění bezpečnosti vašeho webu</p>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Spolehlivý provoz, zálohování a odborná podpora</h3>
+          <p class="text-gray-600 mb-6">Zajišťujeme bezpečnost webu, pravidelné aktualizace a technickou podporu. V případě problému máte k dispozici partnera, který školní prostředí zná.</p>
           <a href={getUrl('/cenik')} class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
             Více informací
           </a>
@@ -76,8 +229,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Kompletní řešení</h3>
-          <p class="text-gray-600 mb-6">Od návrhu přes naplnění obsahem až po školení a dlouhodobou podporu</p>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Od návrhu až po každodenní provoz webu školy</h3>
+          <p class="text-gray-600 mb-6">Navrhneme strukturu webu, pomůžeme s obsahem, zaškolíme zaměstnance a postaráme se o dlouhodobý provoz. Jedno řešení, jedna odpovědnost.</p>
           <a href={getUrl('/cenik')} class="inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors">
             Více informací
           </a>
@@ -90,9 +243,9 @@ import { getUrl } from '../lib/utils';
   <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-12 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Přidejte se k našim spokojeným zákazníkům</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Weby pro školy, kterým ředitelé důvěřují</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Tvoříme weby pro mateřské, základní a střední školy po celé České republice
+          Vytváříme weby pro mateřské, základní a střední školy po celé České republice.
         </p>
       </div>
       
@@ -100,15 +253,15 @@ import { getUrl } from '../lib/utils';
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
         <div class="text-center scroll-reveal bg-white rounded-xl p-8 shadow-sm">
           <div class="text-4xl md:text-5xl font-bold text-brand mb-2"><span class="count" data-target="8" data-duration="2000">0</span> <span class="text-lg font-medium">týdnů</span></div>
-          <div class="text-gray-600 font-medium">od kontaktu po spuštění</div>
+          <div class="text-gray-600 font-medium">od prvního kontaktu po spuštění webu školy</div>
         </div>
         <div class="text-center scroll-reveal bg-white rounded-xl p-8 shadow-sm">
           <div class="text-4xl md:text-5xl font-bold text-brand mb-2"><span class="count" data-target="99" data-duration="1200">0</span><span class="text-lg font-medium">%</span></div>
-          <div class="text-gray-600 font-medium">spokojených škol</div>
+          <div class="text-gray-600 font-medium">dlouhodobě spokojených s řešením Školní weby</div>
         </div>
         <div class="text-center scroll-reveal bg-white rounded-xl p-8 shadow-sm">
-          <div class="text-4xl md:text-5xl font-bold text-brand mb-2"><span class="count" data-target="12" data-duration="1500">0</span> <span class="text-lg font-medium">měsíců</span></div>
-          <div class="text-gray-600 font-medium">podpory v balíčku</div>
+          <div class="text-4xl md:text-5xl font-bold text-brand mb-2"><span class="text-lg font-medium">až</span> <span class="count" data-target="12" data-duration="1500">0</span> <span class="text-lg font-medium">měsíců</span></div>
+          <div class="text-gray-600 font-medium">v ceně každého balíčku</div>
         </div>
       </div>
 
@@ -123,6 +276,15 @@ import { getUrl } from '../lib/utils';
         <div class="bg-white px-6 py-3 rounded-lg shadow-sm max-w-xs text-center">
           <div class="text-base font-semibold text-brand">Střední školy</div>
         </div>
+        <div class="bg-white px-6 py-3 rounded-lg shadow-sm max-w-xs text-center">
+          <div class="text-base font-semibold text-brand">Odborné školy</div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 scroll-reveal">
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Každý typ školy má jiné potřeby. Proto weby navrhujeme na míru konkrétnímu stupni vzdělávání
+        </p>
       </div>
 
       <script>
@@ -187,38 +349,53 @@ import { getUrl } from '../lib/utils';
   <section class="section bg-white">
     <div class="container-custom">
       <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Proč to školy řeší</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Problémy školních webů</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Řešíme problémy, se kterými se školy běžně potýkají
+          Pomáháme školám vyřešit situace, které se opakují znovu a znovu – nepřehledný web, chaos v dokumentech a závislost na jednom člověku.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <Card class="scroll-reveal">
-          <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">Rodiče se na webu školy ztrácí</h3>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Nepřehledný web</h3>
-          <p class="text-gray-600 leading-relaxed">→ Jasná struktura a navigace, která dává smysl rodičům i učitelům</p>
+          <p class="text-gray-600 mb-6">Neaktuální informace, složitá navigace a dlouhé hledání základních údajů vedou ke zbytečným dotazům na sekretariát.</p>
+          <div class="pt-4 border-t border-gray-200">
+            <p class="text-gray-700 font-semibold text-sm">→ Navrhneme jasnou strukturu školního webu, ve které rodiče i učitelé rychle najdou to, co potřebují.</p>
+          </div>
         </Card>
         <Card class="scroll-reveal">
-          <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">Chaos v dokumentech</h3>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Dokumenty chaos</h3>
-          <p class="text-gray-600 leading-relaxed">→ Organizované sekce, štítky a vyhledávání pro snadné nalezení dokumentů</p>
+          <p class="text-gray-600 mb-6">Povinné dokumenty jsou rozházené nebo neaktuální. Výroční zprávy, směrnice, formuláře i GDPR dokumenty bývají uložené bez systému – což je riziko při kontrole i problém pro rodiče.</p>
+          <div class="pt-4 border-t border-gray-200">
+            <p class="text-gray-700 font-semibold text-sm">→ Dokumenty přehledně uspořádáme, označíme štítky a doplníme vyhledávání pro snadnou orientaci.</p>
+          </div>
         </Card>
         <Card class="scroll-reveal">
-          <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">Web školy spravuje jen jeden "ajťák"</h3>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Závislost na jednom člověku</h3>
-          <p class="text-gray-600 leading-relaxed">→ Jednoduchá správa pro celý tým + servis, který vás nenechá na holičkách</p>
+          <p class="text-gray-600 mb-6">Když onemocní nebo odejde, web se neaktualizuje a nikdo neví, jak s ním pracovat.</p>
+          <div class="pt-4 border-t border-gray-200">
+            <p class="text-gray-700 font-semibold text-sm">→ Jednoduchá správa pro celý tým školy + dlouhodobý servis, na který se můžete spolehnout.</p>
+          </div>
         </Card>
       </div>
     </div>
@@ -228,9 +405,9 @@ import { getUrl } from '../lib/utils';
   <section class="section bg-white">
     <div class="container-custom">
       <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Ukázky našich webů</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Weby pro školy z celé ČR</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Podívejte se na weby, které jsme vytvořili pro školy po celé České republice
+          Každý web je přizpůsoben potřebám konkrétní školy a jejím rodíum.
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -250,9 +427,9 @@ import { getUrl } from '../lib/utils';
   <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Co dodáme</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Kompletní webové řešení pro školu – bez starostí</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Kompletní řešení od návrhu až po dlouhodobou podporu
+          Postaráme se o celý proces tvorby webových stránek pro školu – od návrhu struktury až po dlouhodobou technickou podporu. Škola má jednoho partnera a jasnou odpovědnost.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -262,8 +439,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Struktura a design</h3>
-          <p class="text-gray-600">Moderní, responzivní design přizpůsobený potřebám školy</p>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Struktura a design školního webu</h3>
+          <p class="text-gray-600">Přehledný a moderní web přizpůsobený potřebám školy. Navrhneme strukturu webu tak, aby se na něm rodiče, žáci i učitelé rychle orientovali. Design je moderní, responzivní a respektuje charakter školy.</p>
         </Card>
         <Card class="scroll-reveal text-center">
           <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -271,8 +448,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Přenos obsahu</h3>
-          <p class="text-gray-600">Pomůžeme s přenosem a úpravou veškerého obsahu</p>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Přenos a úprava obsahu</h3>
+          <p class="text-gray-600">Bezpečný převod obsahu ze stávajícího webu. Pomůžeme s přenosem dokumentů, aktualit i stránek ze starého webu. Obsah zároveň projdeme a upravíme tak, aby byl přehledný a aktuální.</p>
         </Card>
         <Card class="scroll-reveal text-center">
           <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -280,8 +457,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Rychlost a bezpečnost</h3>
-          <p class="text-gray-600">Optimalizace pro rychlost a zajištění bezpečnosti</p>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Rychlost a bezpečnost webu školy</h3>
+          <p class="text-gray-600">Stabilní a bezpečný provoz bez technických starostí. Web optimalizujeme pro rychlé načítání a zajštíme základní bezpečnostní opatření, aktualizace a ochranu dat v souladu s běžnými standardy.</p>
         </Card>
         <Card class="scroll-reveal text-center">
           <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -289,8 +466,8 @@ import { getUrl } from '../lib/utils';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-3">Servis + školení</h3>
-          <p class="text-gray-600">Školení správce a dlouhodobá technická podpora</p>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Servis a školení</h3>
+          <p class="text-gray-600">Škola má web plně pod kontrolou. Zaškolíme správce webu a poskytneme dlouhodobou technickou podporu. Když je potřeba, víte, na koho se obrátit – bez hledání náhradního řešení.</p>
         </Card>
       </div>
     </div>
@@ -300,69 +477,75 @@ import { getUrl } from '../lib/utils';
   <section class="section bg-white">
     <div class="container-custom">
       <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Jak to probíhá</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Jednoduchý a přehledný proces tvorby webu školy</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Průhledný proces od prvního kontaktu po spuštění webu
+          Tvorbu webových stránek pro školu jsme rozdělili do jasných kroků. Víte, co se bude dít, kdy a kdo má co na starosti – bez zbytečné administrativy.
         </p>
       </div>
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row items-start justify-center gap-6 mb-8">
-          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
-            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.586a1 1 0 01.707.293L11 5h2a2 2 0 012 2v1m-1 7v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-3"/></svg>
+          <!-- Krok 1 -->
+          <div class="flex flex-col items-center w-56 scroll-reveal h-full">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.586a1 1 0 01.707.293L11 5h2a2 2 0 012 2v1m-1 7v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-3"/></svg>
             </div>
-            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Krátký call</p>
-            <p class="text-sm text-gray-500 mt-2">Rychlý telefonát pro zjištění potřeb školy</p>
+            <h3 class="text-lg font-bold text-gray-900 text-center mb-2 min-h-[80px] flex items-center justify-center">Krátký úvodní hovor</h3>
+            <p class="text-sm text-gray-600 text-center">Rychlé zjištění potřeb vaší školy</p>
           </div>
 
           <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
 
-          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
-            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h3m10 0h3a1 1 0 001-1V7M7 21h10"/></svg>
+          <!-- Krok 2 -->
+          <div class="flex flex-col items-center w-56 scroll-reveal h-full">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h3m10 0h3a1 1 0 001-1V7M7 21h10"/></svg>
             </div>
-            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Návrh struktury</p>
-            <p class="text-sm text-gray-500 mt-2">Navrhneme logickou strukturu obsahu a menu</p>
+            <h3 class="text-lg font-bold text-gray-900 text-center mb-2 min-h-[80px] flex items-center justify-center">Návrh struktury webu</h3>
+            <p class="text-sm text-gray-600 text-center">Logické uspořádání obsahu a menu</p>
           </div>
 
           <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
 
-          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
-            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12l9-5-9-5-9 5 9 5z"/></svg>
+          <!-- Krok 3 -->
+          <div class="flex flex-col items-center w-56 scroll-reveal h-full">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12l9-5-9-5-9 5 9 5z"/></svg>
             </div>
-            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Design</p>
-            <p class="text-sm text-gray-500 mt-2">Vytvoříme vizuální návrh a ukázky stránek</p>
+            <h3 class="text-lg font-bold text-gray-900 text-center mb-2 min-h-[80px] flex items-center justify-center">Design stránek</h3>
+            <p class="text-sm text-gray-600 text-center">Moderní vzhled přizpůsobený vaší škole</p>
           </div>
 
           <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
 
-          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
-            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
+          <!-- Krok 4 -->
+          <div class="flex flex-col items-center w-56 scroll-reveal h-full">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
             </div>
-            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Naplnění</p>
-            <p class="text-sm text-gray-500 mt-2">Doplníme texty, obrázky a dokumenty</p>
+            <h3 class="text-lg font-bold text-gray-900 text-center mb-2 min-h-[80px] flex items-center justify-center">Naplnění obsahem</h3>
+            <p class="text-sm text-gray-600 text-center">Texty, dokumenty a obrázky bez starostí</p>
           </div>
 
           <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
 
-          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
-            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <!-- Krok 5 -->
+          <div class="flex flex-col items-center w-56 scroll-reveal h-full">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
-            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Spuštění</p>
-            <p class="text-sm text-gray-500 mt-2">Přesun na živý hosting a finální kontrola</p>
+            <h3 class="text-lg font-bold text-gray-900 text-center mb-2 min-h-[80px] flex items-center justify-center">Spuštění webu</h3>
+            <p class="text-sm text-gray-600 text-center">Bezpečné spuštění a finální kontrola</p>
           </div>
 
           <div class="hidden lg:flex items-center mt-6"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
 
-          <div class="flex flex-col items-center w-44 text-center scroll-reveal min-h-[220px]">
-            <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <!-- Krok 6 -->
+          <div class="flex flex-col items-center w-56 scroll-reveal h-full">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
-            <p class="text-base md:text-lg font-semibold text-gray-900 mb-1 min-h-[2.25rem]">Servis</p>
-            <p class="text-sm text-gray-500 mt-2">Pravidelná podpora, aktualizace a školení</p>
+            <h3 class="text-lg font-bold text-gray-900 text-center mb-2 min-h-[80px] flex items-center justify-center">Servis a podpora</h3>
+            <p class="text-sm text-gray-600 text-center">Web, na který se můžete spolehnout</p>
           </div>
         </div>
         <div class="text-center scroll-reveal">
@@ -378,15 +561,22 @@ import { getUrl } from '../lib/utils';
   <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Balíčky</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Vyberte si balíček, který nejlépe vyhovuje potřebám vaší školy
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Kolik stojí webové stránky pro školu</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+          Vyberte si balíček školního webu, který odpovídá velikosti vaší školy a nárokům na správu, funkce i dlouhodobou podporu. Všechny balíčky splnňují základní legislativní požadavky.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-4">
         {pricingTiers.map((tier) => (
           <PricingCard {...tier} />
         ))}
+      </div>
+      <p class="text-sm text-gray-600 italic text-center max-w-3xl mx-auto mb-8">
+        * Ceny jsou orientační – finální nabídku vždy přizpůsobíme konkrétní škole.
+      </p>
+      <div class="rounded-lg p-6 max-w-3xl mx-auto mb-8 text-center scroll-reveal" style="background-color: #F7F7FC;">
+        <p class="text-gray-900 font-semibold mb-2">Nevíte, který balíček je pro vaši školu vhodný?</p>
+        <p class="text-gray-600">Ozvěte se nám – doporučíme řešení podle velikosti školy, zřizovatele i rozpočtu.</p>
       </div>
       <!-- odstraněno: "Zobrazit ceník" tlačítko podle požadavku -->
     </div>
@@ -398,11 +588,11 @@ import { getUrl } from '../lib/utils';
       <div class="text-center mb-16 scroll-reveal">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Často kladené otázky</h2>
         <p class="text-xl text-gray-600">
-          Odpovědi na nejčastější dotazy
+          Odpovědi na nejčastější dotazy ředitelů a vedení škol
         </p>
       </div>
-      <FAQAccordion faqs={faq.slice(0, 5)} />
-      <FAQSchema faqs={faq.slice(0, 5)} />
+      <FAQAccordion faqs={faq.slice(0, 8)} />
+      <FAQSchema faqs={faq.slice(0, 8)} />
     </div>
   </section>
 
@@ -410,7 +600,7 @@ import { getUrl } from '../lib/utils';
 
   <!-- Bottom CTA -->
   <CTABanner 
-    title="Chcete web, který škola zvládne spravovat bez stresu?"
+    title="Vyřešte web školy jednou provždy"
     ctaText="Konzultace zdarma"
     ctaHref="/kontakt"
   />

@@ -8,9 +8,91 @@ import Card from '../components/Card.astro';
   title="Kontakt - Nezávazná nabídka | ŠkolníWeby"
   description="Kontaktujte nás pro nezávaznou nabídku webu pro vaši školu. Rádi vám odpovíme na všechny otázky a připravíme cenovou kalkulaci."
 >
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://skolniweby.cz/kontakt/#contactpage",
+        "url": "https://skolniweby.cz/kontakt/",
+        "name": "Kontakt",
+        "inLanguage": "cs-CZ",
+        "description": "Kontakt na Školní weby (Broken Mouse s.r.o.). Nezávazná poptávka webových stránek pro školy a dotazy k nabídce.",
+        "isPartOf": {
+          "@id": "https://skolniweby.cz/#website"
+        },
+        "about": {
+          "@id": "https://skolniweby.cz/#organization"
+        },
+        "mainEntity": {
+          "@id": "https://skolniweby.cz/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://skolniweby.cz/#organization",
+        "name": "Školní weby",
+        "legalName": "Broken Mouse s.r.o.",
+        "url": "https://skolniweby.cz/",
+        "email": "info@broken-mouse.cz",
+        "telephone": "+420776831780",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://skolniweby.cz/#logo",
+          "url": "https://lukaskoula.com/wp-content/uploads/2025/12/skolni-weby-logo-modra-webp.webp"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jeronýmova 98/27",
+          "addressLocality": "Jablonecké Paseky",
+          "postalCode": "466 02",
+          "addressCountry": "CZ"
+        },
+        "taxID": "CZ08731811",
+        "vatID": "CZ08731811",
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "name": "IČO",
+            "value": "08731811"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "DIČ",
+            "value": "CZ08731811"
+          }
+        ],
+        "areaServed": {
+          "@type": "Country",
+          "name": "Czech Republic"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "telephone": "+420776831780",
+            "email": "info@broken-mouse.cz",
+            "availableLanguage": ["cs"],
+            "url": "https://skolniweby.cz/kontakt/"
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+420776831780",
+            "email": "info@broken-mouse.cz",
+            "availableLanguage": ["cs"],
+            "url": "https://skolniweby.cz/kontakt/"
+          }
+        ]
+      }
+    ]
+  })} />
+
   <Hero 
     title="Kontakt"
-    subtitle="Máte dotaz nebo chcete nezávaznou nabídku? Napište nám nebo zavolejte."
+    subtitle="Máte dotaz k webovým stránkám pro vaši školu nebo chcete nezávaznou nabídku? Ozvěte se nám – rádi s vámi probereme vaši situaci a doporučíme vhodné řešení."
+    subtitleWide={true}
   />
 
   <section class="section bg-white">
@@ -19,6 +101,10 @@ import Card from '../components/Card.astro';
         <Card class="scroll-reveal">
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Kontaktní údaje</h3>
           <div class="space-y-4">
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Kontaktní osoba</div>
+              <div class="text-gray-900 font-medium">Ing. Ondřej Činátl</div>
+            </div>
             <div>
               <div class="text-sm text-gray-500 mb-1">Email</div>
               <a href="mailto:info@broken-mouse.cz" class="text-brand hover:text-primary-800 font-medium">
@@ -33,7 +119,7 @@ import Card from '../components/Card.astro';
             </div>
             <div>
               <div class="text-sm text-gray-500 mb-1">Provozní doba</div>
-              <div class="text-gray-700">Pondělí - Pátek: 9:00 - 17:00</div>
+              <div class="text-gray-700">Pondělí - Pátek: 9:00 - 15:00</div>
             </div>
           </div>
         </Card>
@@ -42,8 +128,14 @@ import Card from '../components/Card.astro';
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Rychlý kontakt</h3>
           <div class="space-y-4">
             <a 
-              href="mailto:info@broken-mouse.cz?subject=Nezávazná nabídka"
+              href="#contactForm"
               class="block w-full px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-brand transition-colors text-center"
+            >
+              Vyplnit formulář
+            </a>
+            <a 
+              href="mailto:info@broken-mouse.cz?subject=Nezávazná nabídka"
+              class="block w-full px-6 py-3 bg-white text-brand font-semibold rounded-lg border-2 border-brand hover:bg-primary-50 transition-colors text-center"
             >
               Poslat email
             </a>
@@ -57,22 +149,11 @@ import Card from '../components/Card.astro';
         </Card>
       </div>
 
-      <!-- Fakturační údaje -->
-      <Card class="scroll-reveal">
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">Fakturační údaje</h3>
-        <div class="space-y-2 text-gray-700">
-          <div><strong>Název:</strong> [DOPLNIT]</div>
-          <div><strong>IČO:</strong> [DOPLNIT]</div>
-          <div><strong>DIČ:</strong> [DOPLNIT — pokud máte]</div>
-          <div><strong>Adresa sídla:</strong> [DOPLNIT]</div>
-          <div class="text-sm text-gray-500">Vložte zde fakturační údaje, které se mají objevit na smlouvách a fakturách.</div>
-        </div>
-      </Card>
-
       <!-- Kontaktní formulář -->
-      <Card class="scroll-reveal">
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">Kontaktní formulář</h3>
-        <form id="contactForm" action="https://skolniwebyformular-production.up.railway.app/api/contact" method="POST" class="space-y-6">
+      <div id="contactForm" style="scroll-margin-top: 100px;">
+        <Card class="scroll-reveal">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Kontaktní formulář</h3>
+          <form id="contactFormElement" action="https://skolniwebyformular-production.up.railway.app/api/contact" method="POST" class="space-y-6">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
               Jméno a příjmení <span class="text-red-500">*</span>
@@ -160,7 +241,65 @@ import Card from '../components/Card.astro';
             * Povinné pole
           </p>
         </form>
-      </Card>
+        </Card>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 mt-8">
+        <!-- Fakturační údaje -->
+        <Card class="scroll-reveal">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Fakturační údaje</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2 text-gray-700 text-sm">
+              <div><strong>Broken Mouse s.r.o.</strong></div>
+              <div>IČO: 08731811</div>
+              <div>DIČ: CZ08731811</div>
+            </div>
+            <div class="space-y-2 text-gray-700 text-sm">
+              <div class="font-semibold text-gray-900 mb-1">Bankovní spojení</div>
+              <div>Číslo účtu: 2201731044/2010</div>
+              <div>Banka: Fio banka</div>
+            </div>
+            <div class="space-y-2 text-gray-700 text-sm">
+              <div class="font-semibold text-gray-900 mb-1">Sídlo společnosti</div>
+              <div>Jeronýmova 98/27</div>
+              <div>466 02, Jablonecké Paseky</div>
+              <div>Česká republika</div>
+            </div>
+            <div class="space-y-2 text-gray-700 text-sm">
+              <div class="font-semibold text-gray-900 mb-1">Korespondenční adresa</div>
+              <div>Mlýnská 350/24</div>
+              <div>466 01, Jablonec nad Nisou</div>
+            </div>
+          </div>
+        </Card>
+
+        <!-- Naše kanceláře -->
+        <Card class="scroll-reveal">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Naše kanceláře</h3>
+          <div class="space-y-2 text-gray-700">
+            <div>
+              <div class="font-semibold text-gray-900 mb-1">Adresa</div>
+              <div>Mlýnská 350/24</div>
+              <div>466 01, Jablonec nad Nisou</div>
+            </div>
+            <div class="pt-2">
+              <div class="font-semibold text-gray-900 mb-1">Otevírací doba</div>
+              <div>Dle domluvy</div>
+            </div>
+            <div class="pt-4">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.683925098791!2d15.1731856907178!3d50.72580279440001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470ecada15359baf%3A0x394a3b09fec0c07!2sMl%C3%BDnsk%C3%A1%20350%2F24%2C%20466%2001%20Jablonec%20nad%20Nisou%201!5e0!3m2!1scs!2scz!4v1767351780828!5m2!1scs!2scz" 
+                width="100%" 
+                height="300" 
+                style="border:0; border-radius: 0.5rem;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </Card>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -187,7 +326,7 @@ import Card from '../components/Card.astro';
   }
 
   // Contact form handling
-  const form = document.getElementById('contactForm');
+  const form = document.getElementById('contactFormElement');
   const formError = document.getElementById('formError');
   const formSuccess = document.getElementById('formSuccess');
   

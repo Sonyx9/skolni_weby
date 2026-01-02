@@ -8,6 +8,7 @@ Nastavte tyto proměnné na serveru (např. Railway/Heroku Config Vars):
 # Povinné
 SLACK_WEBHOOK_URL=<váš-slack-webhook-url>
 THANK_YOU_URL=https://skolniweby.cz/podekovani
+RECAPTCHA_SECRET_KEY=<váš-recaptcha-secret-key>
 
 # Nepovinné (email notifikace vypnuty)
 # SMTP_HOST=smtp.gmail.com
@@ -24,11 +25,23 @@ THANK_YOU_URL=https://skolniweby.cz/podekovani
 - **Jméno a příjmení** - required
 - **Email** - required  
 - **Telefon** - required
+- **Zpráva** - required
 
 ## Nepovinná pole
 
 - Název školy
-- Zpráva
+
+## reCAPTCHA
+
+Formulář je chráněn pomocí Google reCAPTCHA v3 (neviditelná verze). Pro správné fungování je potřeba:
+
+1. Zaregistrovat se na [Google reCAPTCHA](https://www.google.com/recaptcha/admin)
+2. Vytvořit nový web a zvolit reCAPTCHA v3
+3. Přidat domény, na kterých bude formulář fungovat
+4. Zkopírovat **Secret Key** a nastavit jako `RECAPTCHA_SECRET_KEY` v environment proměnných
+5. **Site Key** použít na frontendu při implementaci reCAPTCHA
+
+**Poznámka:** Pokud `RECAPTCHA_SECRET_KEY` není nastaven, validace se přeskočí (užitečné pro vývoj).
 
 ## Formát notifikace
 
