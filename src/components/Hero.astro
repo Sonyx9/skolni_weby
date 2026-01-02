@@ -27,6 +27,20 @@ const base = import.meta.env.BASE_URL;
             {subtitle}
           </p>
         )}
+
+        {image && (
+          <div class="fade-in lg:hidden relative mb-8">
+            <div class="relative z-20 flex justify-center">
+              <img 
+                src={image} 
+                alt="" 
+                class="w-full max-w-xl h-auto object-contain bg-transparent"
+                loading="eager"
+              />
+            </div>
+            {image.includes('placeholder') && <span class="img-label">NAHRADIT</span>}
+          </div>
+        )}
         
         <div class="flex flex-col sm:flex-row gap-4">
           {primaryCta && (
